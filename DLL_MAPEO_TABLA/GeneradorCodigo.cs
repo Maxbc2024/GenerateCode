@@ -1859,13 +1859,13 @@ namespace DLL_MAPEO
         public StringBuilder Clase_Negocio_V3(Tabla p_objTabla)
         {
             StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public class " + p_objTabla.Nombre + " {");
+            p_Cadena.AppendLine("public class Adm" + p_objTabla.Nombre + " {");
 
             p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("private List<" + p_objTabla.Nombre + "> Listado" + p_objTabla.Nombre + " = null;");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public " + p_objTabla.Nombre + " {");
+            p_Cadena.AppendLine("public Adm" + p_objTabla.Nombre + "()");
             p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("   Listado" + p_objTabla.Nombre + " = new List<" + p_objTabla.Nombre + ">();");
             p_Cadena.AppendLine("}");
@@ -2772,27 +2772,32 @@ namespace DLL_MAPEO
         {
             string p_Cadena = "";
             p_Cadena = TipoDatoBD.ToLower();
-            if (TipoDatoBD.Length > 3)
-            {
-                p_Cadena = TipoDatoBD.Substring(0, 4);
-            }
-            p_Cadena = p_Cadena.Trim();
+            //if (TipoDatoBD.Length > 3)
+            //{
+            //    p_Cadena = TipoDatoBD.Substring(0, 4);
+            //}
             p_Cadena = p_Cadena.Trim();
             switch (p_Cadena)
             {
                 case "char":
                     p_Cadena = "Convert.ToString(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? " + "\"" + "\"" + " : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-                case "varc":
+                case "varchar":
                     p_Cadena = "Convert.ToString(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? " + "\"" + "\"" + " : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-                case "deci":
+                case "decimal":
                     p_Cadena = "Convert.ToDouble(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0.0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-                case "nume":
+                case "numeric":
                     p_Cadena = "Convert.ToDouble(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0.0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "date":
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
+                case "datetime":
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
+                case "smalldatetime":
                     p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "int":
@@ -2801,12 +2806,17 @@ namespace DLL_MAPEO
                 case "bit":
                     p_Cadena = "Convert.ToBoolean(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? true : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-                case "tiny":
+                case "tinyint":
                     p_Cadena = "Convert.ToInt16(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-                case "doub":
-                    p_Cadena = "Convert.ToDouble(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0.0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                case "int identity": /// entero y identity
+                    p_Cadena = "Convert.ToInt32(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
+                case "smallint":
+                    p_Cadena = "Convert.ToInt16(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
+
+
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
             return p_cad;
