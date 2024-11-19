@@ -1860,9 +1860,21 @@ namespace DLL_MAPEO
         {
             StringBuilder p_Cadena = new StringBuilder();
             p_Cadena.AppendLine("public class Adm" + p_objTabla.Nombre + " {");
-
-            p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+
+            p_Cadena.AppendLine("private static Adm" + p_objTabla.Nombre + " instance = null;");
+            p_Cadena.AppendLine("public static Adm" + p_objTabla.Nombre + " Instance()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("if (instance == null)");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("instance = new Adm" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("return instance;");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine(""); 
             p_Cadena.AppendLine("private List<" + p_objTabla.Nombre + "> Listado" + p_objTabla.Nombre + " = null;");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("public Adm" + p_objTabla.Nombre + "()");
@@ -1950,15 +1962,15 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine(" ");
             p_Cadena.AppendLine("     foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ") ");
             p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("       if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
+            p_Cadena.AppendLine("       if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.INSERT) ");
             p_Cadena.AppendLine("         {");
             p_Cadena.AppendLine("             listadoInsertar.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.UPDATE)");
             p_Cadena.AppendLine("         {");
             p_Cadena.AppendLine("             listadoActualizacion.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.DELETE)");
             p_Cadena.AppendLine("         {");
             p_Cadena.AppendLine("             listadoEliminacion.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("         }");
@@ -1988,15 +2000,15 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
             p_Cadena.AppendLine("     SqlServer" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.INSERT)");
             p_Cadena.AppendLine("     {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Insertar(p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.UPDATE)");
             p_Cadena.AppendLine("     {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.DELETE)");
             p_Cadena.AppendLine("     {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("     }");
@@ -2027,15 +2039,15 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine(" ");
             p_Cadena.AppendLine("       foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ") ");
             p_Cadena.AppendLine("           {");
-            p_Cadena.AppendLine("           if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
+            p_Cadena.AppendLine("           if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.INSERT) ");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("               listadoInsertar.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
-            p_Cadena.AppendLine("       else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+            p_Cadena.AppendLine("       else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.UPDATE)");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("               listadoActualizacion.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
-            p_Cadena.AppendLine("       else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+            p_Cadena.AppendLine("       else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.DELETE)");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("               listadoEliminacion.Add(obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
@@ -2085,15 +2097,15 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("       DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
             p_Cadena.AppendLine("       SqlServer" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.INSERT)");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Insertar(ref l_trans,p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.UPDATE)");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(ref l_trans,p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
-            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+            p_Cadena.AppendLine("  if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBDV2.DELETE)");
             p_Cadena.AppendLine("           {");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(ref l_trans,p_obj" + p_objTabla2.Nombre + ");");
             p_Cadena.AppendLine("           }");
@@ -2285,7 +2297,7 @@ namespace DLL_MAPEO
         public StringBuilder Clase_GUI_CrearTable(Tabla p_objTabla)
         {
             StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("void CrearTabla" + p_objTabla.Nombre + "(){");
+            p_Cadena.AppendLine("private void CrearTabla" + p_objTabla.Nombre + "(){");
             p_Cadena.AppendLine(" private DataTable dt" + p_objTabla.Nombre + " = new DataTable();");
             p_Cadena.AppendLine("   dt" + p_objTabla.Nombre + ".Columns.Add(" + "\"" + "Id" + "\"" + ", typeof(string));");
             foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
@@ -2300,7 +2312,7 @@ namespace DLL_MAPEO
         public StringBuilder Clase_GUI_CrearGrid(Tabla p_objTabla)
         {
             StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("void CargarGrid" + p_objTabla.Nombre + "(){");
+            p_Cadena.AppendLine("private void CargarGrid" + p_objTabla.Nombre + "(){");
             p_Cadena.AppendLine(" dt" + p_objTabla.Nombre + ".Rows.Clear();");
             p_Cadena.AppendLine(" foreach (" + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " in obj" + p_objTabla.Nombre + ".ListarTodos())");
             p_Cadena.AppendLine(" {");
@@ -2357,7 +2369,6 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine(" private void grvListado_RowEnter(object sender, DataGridViewCellEventArgs e)");
             p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         Int32 i = e.RowIndex;");
             p_Cadena.AppendLine("         Seleccionar(e.RowIndex);");
             p_Cadena.AppendLine("     }");
             p_Cadena.AppendLine("");
@@ -2391,7 +2402,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("  private void Seleccionar(int p_Fila){ ");
             p_Cadena.AppendLine("    if (p_Fila >= 0){ ");
             p_Cadena.AppendLine("      string p_Id = Convert.ToString(this.grvListado" + p_objTabla.Nombre + ".Rows[p_Fila].Cells[" + "\"" + "ColId" + "\"" + "].Value);");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
+            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdm" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
             p_Cadena.AppendLine("    Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("    } ");
             p_Cadena.AppendLine("    } ");
@@ -2418,7 +2429,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("     private void Nuevo()");
             p_Cadena.AppendLine("     {");
             p_Cadena.AppendLine("          " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = new " + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("          objAdministrador" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
+            p_Cadena.AppendLine("          objAdm" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("          CargarGrid" + p_objTabla.Nombre + "();");
             p_Cadena.AppendLine("          SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id);");
@@ -2427,8 +2438,8 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("     private void Insertar()");
             p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
-            p_Cadena.AppendLine("     objAdministrador" + p_objTabla.Nombre + ".Modificar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
+            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdm" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
+            p_Cadena.AppendLine("     objAdm" + p_objTabla.Nombre + ".Modificar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
             p_Cadena.AppendLine("     Obtener" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("     CargarGrid" + p_objTabla.Nombre + "();");
@@ -2437,8 +2448,9 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("     private void Eliminar()");
             p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
-            p_Cadena.AppendLine("        objAdministrador" + p_objTabla.Nombre + ".Eliminar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
+            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdm" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
+            p_Cadena.AppendLine("             Obtener" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
+            p_Cadena.AppendLine("        objAdm" + p_objTabla.Nombre + ".Eliminar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("        CargarGrid" + p_objTabla.Nombre + "(); ");
             p_Cadena.AppendLine("        SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id); ");
@@ -2446,13 +2458,13 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("     private void CancelarCambio()");
             p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("          objAdministrador" + p_objTabla.Nombre + ".CancelarCambios" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("          objAdm" + p_objTabla.Nombre + ".CancelarCambios" + p_objTabla.Nombre + "();");
             p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
             p_Cadena.AppendLine("     }");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("     private void GuardarCambio()");
             p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("           objAdministrador" + p_objTabla.Nombre + ".Guardar" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           objAdm" + p_objTabla.Nombre + ".Guardar" + p_objTabla.Nombre + "();");
             p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
             p_Cadena.AppendLine("     }");
             p_Cadena.AppendLine("");
@@ -2681,7 +2693,9 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             //** UPDATE
             p_Cadena.AppendLine("         UPDATE " + p_objTabla.Nombre + " ");
-            p_Cadena.AppendLine("             SET ESTADO=@Estado");
+            p_Cadena.AppendLine("             SET ESTADO = 'I', ");
+            p_Cadena.AppendLine("                 FechaModificacion = GETDATE(),  ");
+            p_Cadena.AppendLine("                 UsuarioModificacion = @UsuarioRegistro  ");
             //** WHERE
             p_Cadena.AppendLine("         WHERE");
             foreach (Columnas objColumnas in p_objTabla.ListarColumnasLlavePrimaria())
@@ -2797,14 +2811,14 @@ namespace DLL_MAPEO
                 case "datetime":
                     p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
+                case "datetime2":
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
                 case "smalldatetime":
                     p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "int":
                     p_Cadena = "Convert.ToInt32(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
-                    break;
-                case "bit":
-                    p_Cadena = "Convert.ToBoolean(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? true : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "tinyint":
                     p_Cadena = "Convert.ToInt16(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
@@ -2815,8 +2829,15 @@ namespace DLL_MAPEO
                 case "smallint":
                     p_Cadena = "Convert.ToInt16(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
-
-
+                case "bit":
+                    p_Cadena = "Convert.ToBoolean(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? false : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
+                case "text":
+                    p_Cadena = "Convert.ToString(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? " + "\"" + "\"" + " : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;
+                case "nvarchar":
+                    p_Cadena = "Convert.ToString(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? " + "\"" + "\"" + " : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    break;    
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
             return p_cad;
@@ -2841,7 +2862,16 @@ namespace DLL_MAPEO
                 case "numeric":
                     p_Cadena = consts.TIPO_DATO_DOUBLE_BD;
                     break;
+                case "date":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
                 case "datetime":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
+                case "datetime2":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
+                case "smalldatetime":
                     p_Cadena = consts.TIPO_DATO_FECHA_BD;
                     break;
                 case "int":
@@ -2850,11 +2880,20 @@ namespace DLL_MAPEO
                 case "tinyint":
                     p_Cadena = consts.TIPO_DATO_ENTERO2_BD;
                     break;
+                case "int identity":
+                    p_Cadena = consts.TIPO_DATO_ENTERO_BD;
+                    break;
+                case "smallint":
+                    p_Cadena = consts.TIPO_DATO_ENTERO_BD;
+                    break;
                 case "bit":
                     p_Cadena = consts.TIPO_DATO_BOOLEANO_BD;
                     break;
-                case "int identity":
-                    p_Cadena = consts.TIPO_DATO_ENTERO_BD;
+                case "text":
+                    p_Cadena = consts.TIPO_DATO_CADENA_BD;
+                    break;
+                case "nvarchar":
+                    p_Cadena = consts.TIPO_DATO_CADENA_BD;
                     break;
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
@@ -2865,42 +2904,56 @@ namespace DLL_MAPEO
 
         public StringBuilder ConvertirTipoDatoSQLTO_C(Columnas p_objColumnas)
         {
-            string p_Cadena = "";
-            if (p_objColumnas.TipoDato.Length > 3)
-            {
-                p_Cadena = p_objColumnas.TipoDato.Substring(0, 4);
-            }
-            else
-            {
-                p_Cadena = p_objColumnas.TipoDato;
-            }
+            string p_Cadena = p_objColumnas.TipoDato;
             p_Cadena = p_Cadena.Trim();
             switch (p_Cadena)
             {
                 case "char":
                     p_Cadena = consts.TIPO_DATO_CADENA_C;
                     break;
-                case "varc":
+                case "varchar":
                     p_Cadena = consts.TIPO_DATO_CADENA_C;
                     break;
-                case "deci":
+                case "decimal":
                     p_Cadena = consts.TIPO_DATO_DOUBLE_C;
                     break;
-                case "nume":
+                case "numeric":
                     p_Cadena = consts.TIPO_DATO_DOUBLE_C;
                     break;
                 case "date":
                     p_Cadena = consts.TIPO_DATO_FECHA_C;
                     break;
+                case "datetime":
+                    p_Cadena = consts.TIPO_DATO_FECHA_C;
+                    break;
+                case "datetime2":
+                    p_Cadena = consts.TIPO_DATO_FECHA_C;
+                    break;
+                case "smalldatetime":
+                    p_Cadena = consts.TIPO_DATO_FECHA_C;
+                    break;
                 case "int":
                     p_Cadena = consts.TIPO_DATO_ENTERO_C;
+                    break;
+                case "tinyint":
+                    p_Cadena = consts.TIPO_DATO_ENTERO_PEQUEÑO_C;
+                    break;
+                case "int identity":
+                    p_Cadena = consts.TIPO_DATO_ENTERO_C;
+                    break;
+                case "smallint":
+                    p_Cadena = consts.TIPO_DATO_ENTERO_PEQUEÑO_C;
                     break;
                 case "bit":
                     p_Cadena = consts.TIPO_DATO_BOOLEANO_C;
                     break;
-                case "tiny":
-                    p_Cadena = consts.TIPO_DATO_ENTERO_PEQUEÑO_C;
+                case "text":
+                    p_Cadena = consts.TIPO_DATO_CADENA_C;
                     break;
+                case "nvarchar":
+                    p_Cadena = consts.TIPO_DATO_CADENA_C;
+                    break;
+              
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
             return p_cad;
@@ -2910,42 +2963,56 @@ namespace DLL_MAPEO
 
         public StringBuilder ConvertirTipoDatoSQL_ConvertTO_C(Columnas p_objColumnas)
         {
-            string p_Cadena = "";
-            if (p_objColumnas.TipoDato.Length > 3)
-            {
-                p_Cadena = p_objColumnas.TipoDato.Substring(0, 4);
-            }
-            else
-            {
-                p_Cadena = p_objColumnas.TipoDato;
-            }
+            string p_Cadena =p_objColumnas.TipoDato;
             p_Cadena = p_Cadena.Trim();
             switch (p_Cadena)
             {
                 case "char":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_CADENA_C;
                     break;
-                case "varc":
+                case "varchar":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_CADENA_C;
                     break;
-                case "deci":
+                case "decimal":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_DOUBLE_C;
                     break;
-                case "nume":
+                case "numeric":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_DOUBLE_C;
                     break;
                 case "date":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_FECHA_C;
                     break;
+                case "datetime":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_FECHA_C;
+                    break;
+                case "datetime2":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_FECHA_C;
+                    break;
+                case "smalldatetime":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_FECHA_C;
+                    break;
                 case "int":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_ENTERO_C;
+                    break;
+                case "tinyint":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_ENTERO_PEQUEÑO_C;
+                    break;
+                case "int identity":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_ENTERO_C;
+                    break;
+                case "smallint":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_ENTERO_C;
                     break;
                 case "bit":
                     p_Cadena = consts.TIPO_DATO_CONVERTO_TO_BOOLEANO_C;
                     break;
-                case "tiny":
-                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_ENTERO_PEQUEÑO_C;
+                case "text":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_CADENA_C;
                     break;
+                case "nvarchar":
+                    p_Cadena = consts.TIPO_DATO_CONVERTO_TO_CADENA_C;
+                    break;
+
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
             return p_cad;
@@ -2955,42 +3022,56 @@ namespace DLL_MAPEO
         //******** SOLO IMPRIME LOS TIPOS DE DATOS DE SQL SERVER
         public StringBuilder F_TipoDatoProcedureBD_Str2(Columnas p_objColumnas, consts.TIPO_BASE_DATOS p_TipoBaseDatos)
         {
-            string p_Cadena = "";
-            if (p_objColumnas.TipoDato.Length > 3)
-            {
-                p_Cadena = p_objColumnas.TipoDato.Substring(0, 4);
-            }
-            else
-            {
-                p_Cadena = p_objColumnas.TipoDato;
-            }
+            string p_Cadena = p_objColumnas.TipoDato;
             p_Cadena = p_Cadena.Trim();
             switch (p_Cadena)
             {
                 case "char":
                     p_Cadena = consts.TIPO_DATO_CADENA2_BD + "(" + p_objColumnas.tamanio + ")";
                     break;
-                case "varc":
+                case "varchar":
                     p_Cadena = consts.TIPO_DATO_CADENA_BD + "(" + p_objColumnas.tamanio + ")";
                     break;
-                case "deci":
+                case "decimal":
                     p_Cadena = consts.TIPO_DATO_DOUBLE_BD + "(" + p_objColumnas.tamanio + "," + p_objColumnas.Decimales + ")";
                     break;
-                case "nume":
+                case "numeric":
                     p_Cadena = consts.TIPO_DATO_NUMERIC_BD + "(" + p_objColumnas.tamanio + "," + p_objColumnas.Decimales + ")";
                     break;
                 case "date":
                     p_Cadena = consts.TIPO_DATO_FECHA_BD;
                     break;
+                case "datetime":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
+                case "datetime2":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
+                case "smalldatetime":
+                    p_Cadena = consts.TIPO_DATO_FECHA_BD;
+                    break;
                 case "int":
                     p_Cadena = consts.TIPO_DATO_ENTERO_BD;
+                    break;
+                case "tinyint":
+                    p_Cadena = consts.TIPO_DATO_ENTERO2_BD;
+                    break;
+                case "int identity":
+                    p_Cadena = consts.TIPO_DATO_ENTERO2_BD;
+                    break;
+                case "smallint":
+                    p_Cadena = consts.TIPO_DATO_ENTERO2_BD;
                     break;
                 case "bit":
                     p_Cadena = consts.TIPO_DATO_BOOLEANO_BD;
                     break;
-                case "tiny":
-                    p_Cadena = consts.TIPO_DATO_ENTERO2_BD;
+                case "text":
+                    p_Cadena = consts.TIPO_DATO_CADENA2_BD + "(" + p_objColumnas.tamanio + ")";
                     break;
+                case "nvarchar":
+                    p_Cadena = consts.TIPO_DATO_CADENA2_BD + "(" + p_objColumnas.tamanio + ")";
+                    break;
+
             }
             StringBuilder p_cad = new StringBuilder(p_Cadena);
             return p_cad;
@@ -2998,40 +3079,54 @@ namespace DLL_MAPEO
 
         public StringBuilder F_TipoDatoInicializarDatos_C(Columnas p_objColumnas)
         {
-            string p_Cadena = "";
-            if (p_objColumnas.TipoDato.Length > 3)
-            {
-                p_Cadena = p_objColumnas.TipoDato.Substring(0, 4);
-            }
+            string p_Cadena = p_objColumnas.TipoDato;
             p_Cadena = p_Cadena.Trim();
             switch (p_Cadena)
             {
                 case "char":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_CADENA_2;
                     break;
-                case "varc":
+                case "varchar":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_CADENA_2;
                     break;
-                case "deci":
+                case "decimal":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_DOUBLE_2;
                     break;
-                case "nume":
+                case "numeric":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_DOUBLE_2;
                     break;
                 case "date":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_FECHA_2;
                     break;
+                case "datetime":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_FECHA_2;
+                    break;
+                case "datetime2":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_FECHA_2;
+                    break;
+                case "smalldatetime":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_FECHA_2;
+                    break;
                 case "int":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_2;
+                    break;
+                case "tinyint":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_PEQUEÑO_2;
+                    break;
+                case "int identity":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_PEQUEÑO_2;
+                    break;
+                case "smalllint":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_PEQUEÑO_2;
                     break;
                 case "bit":
                     p_Cadena = consts.TIPO_DATO_INICIALIZAR_BOOLEANO_2;
                     break;
-                case "tiny":
-                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_PEQUEÑO_2;
+                case "text":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_CADENA_2;
                     break;
-                case "smal":
-                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_ENTERO_PEQUEÑO_2;
+                case "nvarchar":
+                    p_Cadena = consts.TIPO_DATO_INICIALIZAR_CADENA_2;
                     break;
 
             }

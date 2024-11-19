@@ -29,6 +29,7 @@ namespace DLL_MAPEO
             ListadoLlavePrimaria = new List<LlavePrimaria>();
             this.Id = p_NombreTabla;
             this.Nombre = p_NombreTabla;
+
             CargarColumnas();
             CargarLlavesPrimarias();
             EstablecerLlavePrimaria();
