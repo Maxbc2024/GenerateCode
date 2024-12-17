@@ -42,7 +42,7 @@ public sealed class SqlHelper
         SqlConnection cnx = null;
         try
         {
-            String MyConexion = "Server=SERVERABP2\\EXPRESS17;Database=bohlINV;Trusted_Connection=True";
+            String MyConexion = "Server=SERVERABP2\\EXPRESS17;Database=bohlinfo;Trusted_Connection=True";
             cnx = new SqlConnection(MyConexion);
         }
         catch (Exception ex)

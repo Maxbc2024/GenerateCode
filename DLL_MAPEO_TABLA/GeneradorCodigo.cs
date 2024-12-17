@@ -1298,6 +1298,7 @@ namespace DLL_MAPEO
                 i += 1;
                 break;
             }
+            p_Cadena.AppendLine("");
             p_Cadena.AppendLine("reader = SqlHelper.ExecuteReader(cnx, CommandType.StoredProcedure, sql,arParms); ");
             p_Cadena.AppendLine("while (reader.Read()) ");
             p_Cadena.AppendLine("{ ");
@@ -2806,16 +2807,16 @@ namespace DLL_MAPEO
                     p_Cadena = "Convert.ToDouble(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0.0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "date":
-                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.MinValue : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "datetime":
-                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.MinValue : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "datetime2":
-                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.MinValue : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "smalldatetime":
-                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.Today : reader[" + "\"" + p_NombreColumna + "\"" + "])";
+                    p_Cadena = "Convert.ToDateTime(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? DateTime.MinValue : reader[" + "\"" + p_NombreColumna + "\"" + "])";
                     break;
                 case "int":
                     p_Cadena = "Convert.ToInt32(reader[" + "\"" + p_NombreColumna + "\"" + "].Equals(System.DBNull.Value) ? 0 : reader[" + "\"" + p_NombreColumna + "\"" + "])";
