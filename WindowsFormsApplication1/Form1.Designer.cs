@@ -28,97 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("ClaseNegocio");
-            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
-            treeNode75});
-            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("InterfaceDao");
-            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_Dao");
-            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("BeanEntidad");
-            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
-            treeNode77,
-            treeNode78,
-            treeNode79});
-            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("MantenimientoProcedure");
-            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("Procedure", new System.Windows.Forms.TreeNode[] {
-            treeNode81});
-            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("MantenimientoGUI");
-            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("CrearTable");
-            System.Windows.Forms.TreeNode treeNode85 = new System.Windows.Forms.TreeNode("CrearGrid");
-            System.Windows.Forms.TreeNode treeNode86 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
-            treeNode83,
-            treeNode84,
-            treeNode85});
-            System.Windows.Forms.TreeNode treeNode87 = new System.Windows.Forms.TreeNode("Estado v1", new System.Windows.Forms.TreeNode[] {
-            treeNode76,
-            treeNode80,
-            treeNode82,
-            treeNode86});
-            System.Windows.Forms.TreeNode treeNode88 = new System.Windows.Forms.TreeNode("ClaseNegocioEstadoV2");
-            System.Windows.Forms.TreeNode treeNode89 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
-            treeNode88});
-            System.Windows.Forms.TreeNode treeNode90 = new System.Windows.Forms.TreeNode("InterfaceDaoEstadoV2");
-            System.Windows.Forms.TreeNode treeNode91 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_DaoEstadoV2");
-            System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
-            treeNode90,
-            treeNode91});
-            System.Windows.Forms.TreeNode treeNode93 = new System.Windows.Forms.TreeNode("MantenimientoGUI_EstadoV2");
-            System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
-            treeNode93});
-            System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("EstadoV2", new System.Windows.Forms.TreeNode[] {
-            treeNode89,
-            treeNode92,
-            treeNode94});
-            System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("Controller");
-            System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("Controller", new System.Windows.Forms.TreeNode[] {
-            treeNode96});
-            System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("Entidad");
-            System.Windows.Forms.TreeNode treeNode99 = new System.Windows.Forms.TreeNode("Entidad Dto");
-            System.Windows.Forms.TreeNode treeNode100 = new System.Windows.Forms.TreeNode("Entidad QueryDto");
-            System.Windows.Forms.TreeNode treeNode101 = new System.Windows.Forms.TreeNode("Entidad Controller", new System.Windows.Forms.TreeNode[] {
-            treeNode98,
-            treeNode99,
-            treeNode100});
-            System.Windows.Forms.TreeNode treeNode102 = new System.Windows.Forms.TreeNode("Admin");
-            System.Windows.Forms.TreeNode treeNode103 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
-            treeNode102});
-            System.Windows.Forms.TreeNode treeNode104 = new System.Windows.Forms.TreeNode("Web-blazor", new System.Windows.Forms.TreeNode[] {
-            treeNode97,
-            treeNode101,
-            treeNode103});
-            System.Windows.Forms.TreeNode treeNode105 = new System.Windows.Forms.TreeNode("DaoV3");
-            System.Windows.Forms.TreeNode treeNode106 = new System.Windows.Forms.TreeNode("Entidad V3");
-            System.Windows.Forms.TreeNode treeNode107 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_DaoV3");
-            System.Windows.Forms.TreeNode treeNode108 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
-            treeNode105,
-            treeNode106,
-            treeNode107});
-            System.Windows.Forms.TreeNode treeNode109 = new System.Windows.Forms.TreeNode("ClaseNegocioV3");
-            System.Windows.Forms.TreeNode treeNode110 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
-            treeNode109});
-            System.Windows.Forms.TreeNode treeNode111 = new System.Windows.Forms.TreeNode("V3 SIN BEAN", new System.Windows.Forms.TreeNode[] {
-            treeNode108,
-            treeNode110});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("ClaseNegocio");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("InterfaceDao");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_Dao");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("BeanEntidad");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("MantenimientoProcedure");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Procedure", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("MantenimientoGUI");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Estado v1", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode6,
+            treeNode8,
+            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("ClaseNegocioEstadoV2");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("InterfaceDaoEstadoV2");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_DaoEstadoV2");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
+            treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("MantenimientoGUI_EstadoV2");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("EstadoV2", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode16,
+            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Controller");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Controller", new System.Windows.Forms.TreeNode[] {
+            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Entidad");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Entidad Dto");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Entidad QueryDto");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Entidad Controller", new System.Windows.Forms.TreeNode[] {
+            treeNode22,
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Admin");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Web-blazor", new System.Windows.Forms.TreeNode[] {
+            treeNode21,
+            treeNode25,
+            treeNode27});
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("DaoV3");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Entidad V3");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("SqlServer_Tabla_DaoV3");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("DAO", new System.Windows.Forms.TreeNode[] {
+            treeNode29,
+            treeNode30,
+            treeNode31});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("ClaseNegocioV3");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
+            treeNode33});
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("V3 SIN BEAN", new System.Windows.Forms.TreeNode[] {
+            treeNode32,
+            treeNode34});
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("CrearTable");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("CrearGrid");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Crear Table Procedure");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
+            treeNode36,
+            treeNode37,
+            treeNode38});
             this.cmbTablasBD = new System.Windows.Forms.ComboBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.cmbProcedures = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbTablasBD
             // 
             this.cmbTablasBD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTablasBD.FormattingEnabled = true;
-            this.cmbTablasBD.Location = new System.Drawing.Point(208, 30);
+            this.cmbTablasBD.Location = new System.Drawing.Point(208, 23);
             this.cmbTablasBD.Name = "cmbTablasBD";
             this.cmbTablasBD.Size = new System.Drawing.Size(213, 21);
             this.cmbTablasBD.TabIndex = 0;
             // 
             // Label2
             // 
+            this.Label2.AutoSize = true;
             this.Label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.Label2.Location = new System.Drawing.Point(154, 28);
+            this.Label2.Location = new System.Drawing.Point(154, 27);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(48, 23);
+            this.Label2.Size = new System.Drawing.Size(34, 13);
             this.Label2.TabIndex = 4;
             this.Label2.Text = "Tabla";
             // 
@@ -128,85 +134,90 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(12, 84);
             this.treeView1.Name = "treeView1";
-            treeNode75.Name = "ClaseNegocio";
-            treeNode75.Text = "ClaseNegocio";
-            treeNode76.Name = "Nodo1";
-            treeNode76.Text = "Negocio";
-            treeNode77.Name = "InterfaceDao";
-            treeNode77.Text = "InterfaceDao";
-            treeNode78.Name = "SqlServer_Tabla_Dao";
-            treeNode78.Text = "SqlServer_Tabla_Dao";
-            treeNode79.Name = "BeanEntidad";
-            treeNode79.Text = "BeanEntidad";
-            treeNode80.Name = "Nodo2";
-            treeNode80.Text = "DAO";
-            treeNode81.Name = "MantenimientoProcedure";
-            treeNode81.Text = "MantenimientoProcedure";
-            treeNode82.Name = "Procedure";
-            treeNode82.Text = "Procedure";
-            treeNode83.Name = "MantenimientoGUI";
-            treeNode83.Text = "MantenimientoGUI";
-            treeNode84.Name = "CrearTable";
-            treeNode84.Text = "CrearTable";
-            treeNode85.Name = "CrearGrid";
-            treeNode85.Text = "CrearGrid";
-            treeNode86.Name = "GUI";
-            treeNode86.Text = "GUI";
-            treeNode87.Name = "Nodo4";
-            treeNode87.Text = "Estado v1";
-            treeNode88.Name = "ClaseNegocioEstadoV2";
-            treeNode88.Text = "ClaseNegocioEstadoV2";
-            treeNode89.Name = "Nodo2";
-            treeNode89.Text = "Negocio";
-            treeNode90.Name = "InterfaceDaoEstadoV2";
-            treeNode90.Text = "InterfaceDaoEstadoV2";
-            treeNode91.Name = "SqlServer_Tabla_DaoEstadoV2";
-            treeNode91.Text = "SqlServer_Tabla_DaoEstadoV2";
-            treeNode92.Name = "Nodo3";
-            treeNode92.Text = "DAO";
-            treeNode93.Name = "MantenimientoGUIEstadoV2";
-            treeNode93.Text = "MantenimientoGUI_EstadoV2";
-            treeNode94.Name = "Nodo0";
-            treeNode94.Text = "GUI";
-            treeNode95.Name = "Nodo1";
-            treeNode95.Text = "EstadoV2";
-            treeNode96.Name = "Controller";
-            treeNode96.Text = "Controller";
-            treeNode97.Name = "RaizController";
-            treeNode97.Text = "Controller";
-            treeNode98.Name = "EntidadWeb";
-            treeNode98.Text = "Entidad";
-            treeNode99.Name = "EntidadDto";
-            treeNode99.Text = "Entidad Dto";
-            treeNode100.Name = "EntidadQueryDto";
-            treeNode100.Text = "Entidad QueryDto";
-            treeNode101.Name = "Nodo0";
-            treeNode101.Text = "Entidad Controller";
-            treeNode102.Name = "Admin";
-            treeNode102.Text = "Admin";
-            treeNode103.Name = "Nodo7";
-            treeNode103.Text = "Negocio";
-            treeNode104.Name = "Nodo5";
-            treeNode104.Text = "Web-blazor";
-            treeNode105.Name = "DaoV3";
-            treeNode105.Text = "DaoV3";
-            treeNode106.Name = "EntidadV3";
-            treeNode106.Text = "Entidad V3";
-            treeNode107.Name = "SqlServer_Tabla_DaoV3";
-            treeNode107.Text = "SqlServer_Tabla_DaoV3";
-            treeNode108.Name = "Nodo1";
-            treeNode108.Text = "DAO";
-            treeNode109.Name = "ClaseNegocioV3";
-            treeNode109.Text = "ClaseNegocioV3";
-            treeNode110.Name = "Nodo2";
-            treeNode110.Text = "Negocio";
-            treeNode111.Name = "Nodo0";
-            treeNode111.Text = "V3 SIN BEAN";
+            treeNode1.Name = "ClaseNegocio";
+            treeNode1.Text = "ClaseNegocio";
+            treeNode2.Name = "Nodo1";
+            treeNode2.Text = "Negocio";
+            treeNode3.Name = "InterfaceDao";
+            treeNode3.Text = "InterfaceDao";
+            treeNode4.Name = "SqlServer_Tabla_Dao";
+            treeNode4.Text = "SqlServer_Tabla_Dao";
+            treeNode5.Name = "BeanEntidad";
+            treeNode5.Text = "BeanEntidad";
+            treeNode6.Name = "Nodo2";
+            treeNode6.Text = "DAO";
+            treeNode7.Name = "MantenimientoProcedure";
+            treeNode7.Text = "MantenimientoProcedure";
+            treeNode8.Name = "Procedure";
+            treeNode8.Text = "Procedure";
+            treeNode9.Name = "MantenimientoGUI";
+            treeNode9.Text = "MantenimientoGUI";
+            treeNode10.Name = "GUI";
+            treeNode10.Text = "GUI";
+            treeNode11.Name = "Nodo4";
+            treeNode11.Text = "Estado v1";
+            treeNode12.Name = "ClaseNegocioEstadoV2";
+            treeNode12.Text = "ClaseNegocioEstadoV2";
+            treeNode13.Name = "Nodo2";
+            treeNode13.Text = "Negocio";
+            treeNode14.Name = "InterfaceDaoEstadoV2";
+            treeNode14.Text = "InterfaceDaoEstadoV2";
+            treeNode15.Name = "SqlServer_Tabla_DaoEstadoV2";
+            treeNode15.Text = "SqlServer_Tabla_DaoEstadoV2";
+            treeNode16.Name = "Nodo3";
+            treeNode16.Text = "DAO";
+            treeNode17.Name = "MantenimientoGUIEstadoV2";
+            treeNode17.Text = "MantenimientoGUI_EstadoV2";
+            treeNode18.Name = "Nodo0";
+            treeNode18.Text = "GUI";
+            treeNode19.Name = "Nodo1";
+            treeNode19.Text = "EstadoV2";
+            treeNode20.Name = "Controller";
+            treeNode20.Text = "Controller";
+            treeNode21.Name = "RaizController";
+            treeNode21.Text = "Controller";
+            treeNode22.Name = "EntidadWeb";
+            treeNode22.Text = "Entidad";
+            treeNode23.Name = "EntidadDto";
+            treeNode23.Text = "Entidad Dto";
+            treeNode24.Name = "EntidadQueryDto";
+            treeNode24.Text = "Entidad QueryDto";
+            treeNode25.Name = "Nodo0";
+            treeNode25.Text = "Entidad Controller";
+            treeNode26.Name = "Admin";
+            treeNode26.Text = "Admin";
+            treeNode27.Name = "Nodo7";
+            treeNode27.Text = "Negocio";
+            treeNode28.Name = "Nodo5";
+            treeNode28.Text = "Web-blazor";
+            treeNode29.Name = "DaoV3";
+            treeNode29.Text = "DaoV3";
+            treeNode30.Name = "EntidadV3";
+            treeNode30.Text = "Entidad V3";
+            treeNode31.Name = "SqlServer_Tabla_DaoV3";
+            treeNode31.Text = "SqlServer_Tabla_DaoV3";
+            treeNode32.Name = "Nodo1";
+            treeNode32.Text = "DAO";
+            treeNode33.Name = "ClaseNegocioV3";
+            treeNode33.Text = "ClaseNegocioV3";
+            treeNode34.Name = "Nodo2";
+            treeNode34.Text = "Negocio";
+            treeNode35.Name = "Nodo0";
+            treeNode35.Text = "V3 SIN BEAN";
+            treeNode36.Name = "CrearTable";
+            treeNode36.Text = "CrearTable";
+            treeNode37.Name = "CrearGrid";
+            treeNode37.Text = "CrearGrid";
+            treeNode38.Name = "CrearTableProcedure";
+            treeNode38.Text = "Crear Table Procedure";
+            treeNode39.Name = "Nodo0";
+            treeNode39.Text = "GUI";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode87,
-            treeNode95,
-            treeNode104,
-            treeNode111});
+            treeNode11,
+            treeNode19,
+            treeNode28,
+            treeNode35,
+            treeNode39});
             this.treeView1.Size = new System.Drawing.Size(181, 686);
             this.treeView1.TabIndex = 6;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -223,11 +234,32 @@
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
+            // cmbProcedures
+            // 
+            this.cmbProcedures.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProcedures.FormattingEnabled = true;
+            this.cmbProcedures.Location = new System.Drawing.Point(585, 23);
+            this.cmbProcedures.Name = "cmbProcedures";
+            this.cmbProcedures.Size = new System.Drawing.Size(430, 21);
+            this.cmbProcedures.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(509, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Procedure:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1191, 770);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbProcedures);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.Label2);
@@ -237,6 +269,7 @@
             this.Text = "Generador de Codigo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -246,6 +279,8 @@
         internal System.Windows.Forms.Label Label2;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox cmbProcedures;
+        internal System.Windows.Forms.Label label1;
     }
 }
 

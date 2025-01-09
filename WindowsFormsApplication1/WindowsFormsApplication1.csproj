@@ -127,6 +127,10 @@
       <Project>{7846D9D1-F2B2-482A-94BF-4FDFC386DA0F}</Project>
       <Name>DLL_MAPEO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DLL_MAP\DLL_MAP.csproj">
+      <Project>{36c62a62-3cb0-4d53-a8af-807cae2eeb41}</Project>
+      <Name>DLL_MAP</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ayuda.txt" />

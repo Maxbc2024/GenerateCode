@@ -21,7 +21,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine(" public class Bean" + p_objTabla.Nombre + " {");
             foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
             {
-                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
+                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
             }
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("    public string UsuarioRegistro { get; set; } ");
@@ -38,7 +38,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("    public string Id { get; set; } ");
             foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
             {
-                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
+                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
             }
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("    public string UsuarioRegistro { get; set; } ");
@@ -1340,7 +1340,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("    public string Id { get; set; } ");
             foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
             {
-                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
+                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
             }
             p_Cadena.AppendLine("     public string UsuarioRegistro { get; set; }");
             p_Cadena.AppendLine("     public EstadoRegistro estadoRegistro { get; set; }");
@@ -2295,41 +2295,6 @@ namespace DLL_MAPEO
             return p_Cadena;
         }
 
-        public StringBuilder Clase_GUI_CrearTable(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("private void CrearTabla" + p_objTabla.Nombre + "(){");
-            p_Cadena.AppendLine(" private DataTable dt" + p_objTabla.Nombre + " = new DataTable();");
-            p_Cadena.AppendLine("   dt" + p_objTabla.Nombre + ".Columns.Add(" + "\"" + "Id" + "\"" + ", typeof(string));");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            {
-                p_Cadena.AppendLine("dt" + p_objTabla.Nombre + ".Columns.Add(" + "\"" + objColumnas.NombreColumna + "\"" + ",typeof(" + ConvertirTipoDatoSQLTO_C(objColumnas) + "));");
-            }
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
-
-
-        public StringBuilder Clase_GUI_CrearGrid(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("private void CargarGrid" + p_objTabla.Nombre + "(){");
-            p_Cadena.AppendLine(" dt" + p_objTabla.Nombre + ".Rows.Clear();");
-            p_Cadena.AppendLine(" foreach (" + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " in obj" + p_objTabla.Nombre + ".ListarTodos())");
-            p_Cadena.AppendLine(" {");
-            p_Cadena.AppendLine(" DataRow dtw = dt" + p_objTabla.Nombre + ".NewRow();");
-            p_Cadena.AppendLine("         dtw["+ "\"" +"Id"+"\""+"] = obj" + p_objTabla.Nombre + ".Id;");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
-            {
-                p_Cadena.AppendLine("dtw[" + "\"" + objColumnas.NombreColumna + "\"" + "] = obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + ";");
-            }
-            p_Cadena.AppendLine("   dtw["+ "\"" +"Estado"+"\""+"] = obj"+p_objTabla.Nombre+".estadoRegistro.ImpresionEstado;");
-            p_Cadena.AppendLine("dt" + p_objTabla.Nombre + ".Rows.Add(dtw);");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("this.grvListado" + p_objTabla.Nombre + ".DataSource = dt" + p_objTabla.Nombre + ";");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
 
 
         #endregion
@@ -2489,6 +2454,8 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             return p_Cadena;
         }
+
+
 
         //************************************************************************************
         //************************************************************************************
@@ -2775,6 +2742,53 @@ namespace DLL_MAPEO
 
         #endregion
 
+
+        //************************************************************************************
+        //************************************************************************************
+        //************************************ MAPEO PROCEDURE GUI ***************************
+        //************************************************************************************
+        //************************************************************************************
+
+        public StringBuilder Clase_GUI_CrearTable(Tabla p_objTabla)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("private void CrearTabla" + p_objTabla.Nombre + "(){");
+            p_Cadena.AppendLine(" private DataTable dt" + p_objTabla.Nombre + " = new DataTable();");
+            p_Cadena.AppendLine("   dt" + p_objTabla.Nombre + ".Columns.Add(" + "\"" + "Id" + "\"" + ", typeof(string));");
+            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+            {
+                p_Cadena.AppendLine("dt" + p_objTabla.Nombre + ".Columns.Add(" + "\"" + objColumnas.NombreColumna + "\"" + ",typeof(" + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "));");
+            }
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
+
+
+        public StringBuilder Clase_GUI_CrearGrid(Tabla p_objTabla)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("private void CargarGrid" + p_objTabla.Nombre + "(){");
+            p_Cadena.AppendLine(" dt" + p_objTabla.Nombre + ".Rows.Clear();");
+            p_Cadena.AppendLine(" foreach (" + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " in obj" + p_objTabla.Nombre + ".ListarTodos())");
+            p_Cadena.AppendLine(" {");
+            p_Cadena.AppendLine(" DataRow dtw = dt" + p_objTabla.Nombre + ".NewRow();");
+            p_Cadena.AppendLine("         dtw[" + "\"" + "Id" + "\"" + "] = obj" + p_objTabla.Nombre + ".Id;");
+            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
+            {
+                p_Cadena.AppendLine("dtw[" + "\"" + objColumnas.NombreColumna + "\"" + "] = obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + ";");
+            }
+            p_Cadena.AppendLine("   dtw[" + "\"" + "Estado" + "\"" + "] = obj" + p_objTabla.Nombre + ".estadoRegistro.ImpresionEstado;");
+            p_Cadena.AppendLine("dt" + p_objTabla.Nombre + ".Rows.Add(dtw);");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("this.grvListado" + p_objTabla.Nombre + ".DataSource = dt" + p_objTabla.Nombre + ";");
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
+
+
+        
+
+
         //************************************************************************************
         //************************************************************************************
         //************************************ UTIL ******************************************
@@ -2903,10 +2917,10 @@ namespace DLL_MAPEO
 
 
 
-        public StringBuilder ConvertirTipoDatoSQLTO_C(Columnas p_objColumnas)
+        public StringBuilder ConvertirTipoDatoSQLTO_C(string p_TipoDato)
         {
-            string p_Cadena = p_objColumnas.TipoDato;
-            p_Cadena = p_Cadena.Trim();
+            //string p_Cadena = p_objColumnas.TipoDato;
+            string p_Cadena = p_TipoDato.Trim();
             switch (p_Cadena)
             {
                 case "char":

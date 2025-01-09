@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using DLL_MAPEO;
+using DLL_MAP;
 
 namespace WindowsFormsApplication1
 {
@@ -18,13 +19,21 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        private AdministradorTablas objAdministradorTablas1 = new AdministradorTablas();
+        private AdmProcedure objAdmProcedure = new AdmProcedure();
         private void Form1_Load(object sender, EventArgs e)
         {
-            AdministradorTablas objAdministradorTablas1 = new AdministradorTablas();
+           
 
             this.cmbTablasBD.DataSource = objAdministradorTablas1.ListarTabla();
             this.cmbTablasBD.DisplayMember="Nombre";
             this.cmbTablasBD.ValueMember = "Id";
+
+
+            this.cmbProcedures.DataSource = objAdmProcedure.getProcedures();
+            this.cmbProcedures.DisplayMember = "nombre";
+            this.cmbProcedures.ValueMember = "nombre";
+            
         }
 
 
@@ -35,6 +44,13 @@ namespace WindowsFormsApplication1
             GeneradorCodigoWeb objGeneradorCodigoWeb = new GeneradorCodigoWeb();
             Tabla objTabla = new Tabla(Convert.ToString(this.cmbTablasBD.SelectedValue));
 
+            ///-------------------------
+            //string p_nameProcedure = Convert.ToString(this.cmbProcedures.SelectedValue);
+            string p_nameProcedure = "ListarTodoTipoPieza";
+            GeneradorCodigoMap objGeneradorCodigoMap = new GeneradorCodigoMap();
+
+
+            ///-------------------------
             consts.TIPO_BASE_DATOS p_TIPO_BASE_DATOS =  consts.TIPO_BASE_DATOS.SQL_SERVER;
 
             switch (this.treeView1.SelectedNode.Name) 
@@ -56,12 +72,6 @@ namespace WindowsFormsApplication1
                     break;
                 case "MantenimientoProcedure":
                     p_Impresion = objGeneradorCodigo.Clase_GUI_Mantenimiento_Procedure(objTabla, p_TIPO_BASE_DATOS);
-                    break;
-                case "CrearTable":
-                    p_Impresion = objGeneradorCodigo.Clase_GUI_CrearTable(objTabla);
-                    break;
-                case "CrearGrid":
-                    p_Impresion = objGeneradorCodigo.Clase_GUI_CrearGrid(objTabla);
                     break;
                 //******************************************************************************
                 //****************************** ESTADOV2 ********************************
@@ -115,6 +125,21 @@ namespace WindowsFormsApplication1
                     break;
                 default:
                     break;
+                //******************************************************************************
+                //****************************** GUI *******************************************
+                //******************************************************************************
+                case "CrearTable":
+                    p_Impresion = objGeneradorCodigo.Clase_GUI_CrearTable(objTabla);
+                    break;
+                case "CrearGrid":
+                    p_Impresion = objGeneradorCodigo.Clase_GUI_CrearGrid(objTabla);
+                    break;
+                //************** procedure
+                case "CrearTableProcedure":
+                    p_Impresion = objGeneradorCodigoMap.Clase_GUI_CrearTable_PROCEDURE(objAdmProcedure.getColumns_x_procedure(p_nameProcedure), objGeneradorCodigo.ConvertirTipoDatoSQLTO_C);
+                    break;
+
+                    
             }
             this.richTextBox1.Text = p_Impresion.ToString();
         }
