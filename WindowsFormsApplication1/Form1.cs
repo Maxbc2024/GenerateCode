@@ -23,17 +23,13 @@ namespace WindowsFormsApplication1
         private AdmProcedure objAdmProcedure = new AdmProcedure();
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-
             this.cmbTablasBD.DataSource = objAdministradorTablas1.ListarTabla();
             this.cmbTablasBD.DisplayMember="Nombre";
             this.cmbTablasBD.ValueMember = "Id";
 
-
             this.cmbProcedures.DataSource = objAdmProcedure.getProcedures();
             this.cmbProcedures.DisplayMember = "nombre";
-            this.cmbProcedures.ValueMember = "nombre";
-            
+            this.cmbProcedures.ValueMember = "nombre";          
         }
 
 
@@ -46,13 +42,13 @@ namespace WindowsFormsApplication1
 
             ///-------------------------
             //string p_nameProcedure = Convert.ToString(this.cmbProcedures.SelectedValue);
-            string p_nameProcedure = "ListarTodoTipoPieza";
+            string p_nameProcedure = Convert.ToString(this.cmbProcedures.SelectedValue);
             GeneradorCodigoMap objGeneradorCodigoMap = new GeneradorCodigoMap();
 
 
             ///-------------------------
             consts.TIPO_BASE_DATOS p_TIPO_BASE_DATOS =  consts.TIPO_BASE_DATOS.SQL_SERVER;
-
+            
             switch (this.treeView1.SelectedNode.Name) 
             {
                 case "BeanEntidad":
@@ -104,6 +100,14 @@ namespace WindowsFormsApplication1
                     p_Impresion = objGeneradorCodigo.Clase_Negocio_V3(objTabla);
                     break;
                 //******************************************************************************
+                //****************************** V4 GENERIC ************************************
+                //******************************************************************************
+                case "ClaseNegocioGeneric":
+                    p_Impresion = objGeneradorCodigo.Clase_Negocio_V4_generic(objTabla);
+                    break;
+
+
+                //******************************************************************************
                 //****************************** WEB CONTROLLER ********************************
                 //******************************************************************************
                 case "EntidadWeb":
@@ -137,6 +141,12 @@ namespace WindowsFormsApplication1
                 //************** procedure
                 case "CrearTableProcedure":
                     p_Impresion = objGeneradorCodigoMap.Clase_GUI_CrearTable_PROCEDURE(objAdmProcedure.getColumns_x_procedure(p_nameProcedure), objGeneradorCodigo.ConvertirTipoDatoSQLTO_C);
+                    break;
+                case "CrearGridFromProcedure":
+                    p_Impresion = objGeneradorCodigoMap.Clase_GUI_CrearGrid_PROCEDURE(objAdmProcedure.getColumns_x_procedure(p_nameProcedure), objGeneradorCodigo.ConvertirTipoDatoSQLTO_C);
+                    break;
+                case "EntidadDTO":
+                    p_Impresion = objGeneradorCodigoMap.GenerarEntidadResult_ResultadoProcedure(objAdmProcedure.getColumns_x_procedure(p_nameProcedure), objGeneradorCodigo.ConvertirTipoDatoSQLTO_C);
                     break;
 
                     

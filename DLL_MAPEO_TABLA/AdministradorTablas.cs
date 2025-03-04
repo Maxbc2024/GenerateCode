@@ -11,7 +11,7 @@ namespace DLL_MAPEO
     public class AdministradorTablas
     {
         private List<Tabla> listadoTabla;
-
+        
         public AdministradorTablas() 
         {
             listadoTabla = new List<Tabla>();

@@ -1690,8 +1690,8 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("       {");
             p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".Id = " + "\"" + "N" + "\"" + "+(Listado" + p_objTabla.Nombre + ".Count + 1);");
             p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".estadoRegistro.EstadoRegistroCambiar(p_obj" + p_objTabla.Nombre + ".Id,TipoAccionBDV2.INSERT);");
-            p_Cadena.AppendLine("         Listado" + p_objTabla.Nombre + ".Add(p_obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("         Listado" + p_objTabla.Nombre + ".Add(p_obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("}");
             return p_Cadena;
         }
@@ -1931,10 +1931,6 @@ namespace DLL_MAPEO
         }
 
 
-
-
-        
-
         public StringBuilder Clase_Negocio_Listar_V3( Tabla p_objTabla)
         {
 
@@ -2130,8 +2126,110 @@ namespace DLL_MAPEO
         }
 
 
+        //************************************************************************************
+        //************************************************************************************
+        //************************************ V4 GENERIC ************************************
+        //************************************************************************************
+        //************************************************************************************
 
-       
+
+        public StringBuilder Clase_Negocio_V4_generic(Tabla p_objTabla)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("public class Adm" + p_objTabla.Nombre + ":MyBase<" + p_objTabla.Nombre + ">");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private static Adm" + p_objTabla.Nombre + " instance = null;");
+            p_Cadena.AppendLine("public static Adm" + p_objTabla.Nombre + " Instance()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("if (instance == null)");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("instance = new Adm" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("return instance;");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public Adm" + p_objTabla.Nombre + "()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("}");
+
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("//**************************** " + p_objTabla.Nombre + " ****************************");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("//***********************************************************************************");
+            p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_Agregar_EstadoV2(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_Modificar_EstadoV2(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_Eliminar_EstadoV2(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_Obtener_EstadoV2(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            p_Cadena.AppendLine(Clase_Negocio_Listar_V4(p_objTabla).ToString());
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine(Clase_Negocio_CargarListadoBd_V4(p_objTabla).ToString());
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine(Clase_Negocio_GuardarCambio_1_v4(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_GuardarCambio_2_v3(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_GuardarCambio_trans_1_v3(p_objTabla).ToString());
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine(Clase_Negocio_GuardarCambio_trans_2_v3(p_objTabla).ToString());
+            p_Cadena.AppendLine("");
+            return p_Cadena;
+        }
+
+
+        public StringBuilder Clase_Negocio_Listar_V4(Tabla p_objTabla)
+        {
+
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("//********** LISTAR **********************");
+            p_Cadena.AppendLine("public List<" + p_objTabla.Nombre + "> Listar" + p_objTabla.Nombre + "_Act()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("     return this.ListAll().Where(x => x.Estado == "+"A"+").ToList();");
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+
+        }
+
+        public StringBuilder Clase_Negocio_CargarListadoBd_V4(Tabla p_objTabla2)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("//********** CARGAR LISTADO BD ***************");
+            p_Cadena.AppendLine("public void Cargar" + p_objTabla2.Nombre + "()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("      this.ListClear();");
+            p_Cadena.AppendLine("      DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+            p_Cadena.AppendLine("      SqlServer" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+            p_Cadena.AppendLine("      this.AddAll(objI" + p_objTabla2.Nombre + "DAO.ListarTodos());");
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
+
+        public StringBuilder Clase_Negocio_GuardarCambio_1_v4(Tabla p_objTabla2)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine(" //*********** GUARDAR CAMBIOS ***************");
+            p_Cadena.AppendLine(" public void Guardar" + p_objTabla2.Nombre + "()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+            p_Cadena.AppendLine("     SqlServer" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+            p_Cadena.AppendLine(" ");
+            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Insertar(this.ListALL_BD_INSERT());");
+            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(this.ListALL_BD_UPDATE());");
+            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(this.ListALL_BD_DELETE());");
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
+
 
         //************************************************************************************
         //************************************************************************************
@@ -2315,12 +2413,6 @@ namespace DLL_MAPEO
         public StringBuilder Clase_GUI_GenerarContenidoGUI_EstadoV2(Tabla p_objTabla)
         {
             StringBuilder p_Cadena = new StringBuilder();
-            //p_Cadena.AppendLine(" this.grvListado" + p_objTabla.Nombre + ".RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvListado_RowEnter);");
-            //p_Cadena.AppendLine(" this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);");
-            //p_Cadena.AppendLine(" this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);");
-            //p_Cadena.AppendLine(" this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);");
-            //p_Cadena.AppendLine(" this.btnCancelarCambios.Click += new System.EventHandler(this.btnCancelarCambios_Click);");
-            //p_Cadena.AppendLine(" this.btnGuardarBd.Click += new System.EventHandler(this.btnGuardarBd_Click);");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("//*******************************************************************************************************************************");
@@ -2338,39 +2430,18 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("         Seleccionar(e.RowIndex);");
             p_Cadena.AppendLine("     }");
             p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine("  private void btnNuevo_Click(object sender, EventArgs e)");
-            //p_Cadena.AppendLine("     {");
-            //p_Cadena.AppendLine("         Nuevo();");
-            //p_Cadena.AppendLine("     }");
-            //p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine("private void btnInsertar_Click(object sender, EventArgs e)");
-            //p_Cadena.AppendLine("     {");
-            //p_Cadena.AppendLine("         Insertar();");
-            //p_Cadena.AppendLine("     }");
-            //p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine(" private void btnEliminar_Click(object sender, EventArgs e)");
-            //p_Cadena.AppendLine("     {");
-            //p_Cadena.AppendLine("         Eliminar();");
-            //p_Cadena.AppendLine("     }");
-            //p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine("private void btnCancelarCambios_Click(object sender, EventArgs e)");
-            //p_Cadena.AppendLine("     {");
-            //p_Cadena.AppendLine("         CancelarCambio();");
-            //p_Cadena.AppendLine("     }");
-            //p_Cadena.AppendLine("");
-            //p_Cadena.AppendLine(" private void btnGuardarBd_Click(object sender, EventArgs e)");
-            //p_Cadena.AppendLine("     {");
-            //p_Cadena.AppendLine("         GuardarCambio();");
-            //p_Cadena.AppendLine("     }");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  private void Seleccionar(int p_Fila){ ");
-            p_Cadena.AppendLine("    if (p_Fila >= 0){ ");
+            p_Cadena.AppendLine("  private void Seleccionar(int p_Fila) ");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("    if (p_Fila >= 0)");
+            p_Cadena.AppendLine("    {");
+            p_Cadena.AppendLine("       return;");
+            p_Cadena.AppendLine("    } ");
+            p_Cadena.AppendLine("");
             p_Cadena.AppendLine("      string p_Id = Convert.ToString(this.grvListado" + p_objTabla.Nombre + ".Rows[p_Fila].Cells[" + "\"" + "ColId" + "\"" + "].Value);");
             p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdm" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
             p_Cadena.AppendLine("    Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("    } ");
             p_Cadena.AppendLine("    } ");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("");

@@ -97,10 +97,19 @@
             System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("CrearTable");
             System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("CrearGrid");
             System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Crear Table Procedure");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Crear Grid From Procedure");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("EntidadDTO");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
             treeNode36,
             treeNode37,
-            treeNode38});
+            treeNode38,
+            treeNode39,
+            treeNode40});
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("ClaseNegocioGeneric");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
+            treeNode42});
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("V4 GENERIC", new System.Windows.Forms.TreeNode[] {
+            treeNode43});
             this.cmbTablasBD = new System.Windows.Forms.ComboBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -210,14 +219,25 @@
             treeNode37.Text = "CrearGrid";
             treeNode38.Name = "CrearTableProcedure";
             treeNode38.Text = "Crear Table Procedure";
-            treeNode39.Name = "Nodo0";
-            treeNode39.Text = "GUI";
+            treeNode39.Name = "CrearGridFromProcedure";
+            treeNode39.Text = "Crear Grid From Procedure";
+            treeNode40.Name = "EntidadDTO";
+            treeNode40.Text = "EntidadDTO";
+            treeNode41.Name = "Nodo0";
+            treeNode41.Text = "GUI";
+            treeNode42.Name = "ClaseNegocioGeneric";
+            treeNode42.Text = "ClaseNegocioGeneric";
+            treeNode43.Name = "Nodo1";
+            treeNode43.Text = "Negocio";
+            treeNode44.Name = "V4GENERIC";
+            treeNode44.Text = "V4 GENERIC";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode11,
             treeNode19,
             treeNode28,
             treeNode35,
-            treeNode39});
+            treeNode41,
+            treeNode44});
             this.treeView1.Size = new System.Drawing.Size(181, 686);
             this.treeView1.TabIndex = 6;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
