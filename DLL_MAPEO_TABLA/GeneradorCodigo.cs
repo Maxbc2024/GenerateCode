@@ -2151,11 +2151,27 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("//***********************************************************************************");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
             p_Cadena.AppendLine("public Adm" + p_objTabla.Nombre + "()");
             p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("}");
-
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public string Nuevo()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   " + p_objTabla.Nombre + " objEntidad = new " + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("   return this.ADD(objEntidad);");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public string Modificar(string p_Id)");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   " + p_objTabla.Nombre + " objEntidad = this.ObtenerEntidadXId(p_Id);");
+            p_Cadena.AppendLine("   return this.ADD(objEntidad);");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("Eliminar(string p_Id)");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   " + p_objTabla.Nombre + " objEntidad = this.ObtenerEntidadXId(p_Id);");
+            p_Cadena.AppendLine("   return this.DELETE(objEntidad.Id);");
+            p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("//***********************************************************************************");
             p_Cadena.AppendLine("//***********************************************************************************");
@@ -2227,6 +2243,88 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(this.ListALL_BD_UPDATE());");
             p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(this.ListALL_BD_DELETE());");
             p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
+
+
+
+        public StringBuilder Clase_GUI_GenerarContenidoGUI_Generic(Tabla p_objTabla)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            p_Cadena.AppendLine("//******************************************  " + p_objTabla.Nombre.ToUpper() + " **************************************************************");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            p_Cadena.AppendLine("//*******************************************************************************************************************************");
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine("");
+            p_Cadena.AppendLine(" private void grvListado_RowEnter(object sender, DataGridViewCellEventArgs e)");
+            p_Cadena.AppendLine("     {");
+            p_Cadena.AppendLine("         Seleccionar(e.RowIndex);");
+            p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("");
+            //p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("  private void Seleccionar(int p_Fila) ");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("    if (p_Fila >= 0)");
+            p_Cadena.AppendLine("    {");
+            p_Cadena.AppendLine("       return;");
+            p_Cadena.AppendLine("    } ");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("      string p_Id = Convert.ToString(this.grvListado" + p_objTabla.Nombre + ".Rows[p_Fila].Cells[" + "\"" + "ColId" + "\"" + "].Value);");
+            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " objEntidad = objAdm" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
+            p_Cadena.AppendLine("    Cargar" + p_objTabla.Nombre + "(ref objEntidad);");
+            p_Cadena.AppendLine("    } ");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void Nuevo()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   objAdm" + p_objTabla.Nombre + ".Nuevo();");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void Insertar()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   " + p_objTabla.Nombre + " objEntidad = objAdm" + p_objTabla.Nombre + ".ObtenerEntidadXId(this.txtId.Text);");
+            p_Cadena.AppendLine("   Obtener" + p_objTabla.Nombre + "(ref objEntidad);");
+            p_Cadena.AppendLine("   objAdm" + p_objTabla.Nombre + ".Modificar(this.txtId.Text);");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void Eliminar()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   objAdm" + p_objTabla.Nombre + ".Eliminar(this.txtId.Text);");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void CancelarCambio()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void GuardarCambio()");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void Cargar" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("     this.txtId.Text = Convert.ToString(obj" + p_objTabla.Nombre + ".Id);");
+            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+            {
+                p_Cadena.AppendLine(" this.txt" + objColumnas.NombreColumna + ".Text = Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + ");");
+            }
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("private void Obtener" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("{");
+            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+            {
+                p_Cadena.AppendLine("obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + "= Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(this.txt" + objColumnas.NombreColumna + ".Text);");
+            }
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
             return p_Cadena;
         }
 

@@ -106,7 +106,9 @@ namespace WindowsFormsApplication1
                     p_Impresion = objGeneradorCodigo.Clase_Negocio_V4_generic(objTabla);
                     break;
 
-
+                case "MantenimientoGUIGeneric":
+                    p_Impresion = objGeneradorCodigo.Clase_GUI_GenerarContenidoGUI_Generic(objTabla);
+                    break;
                 //******************************************************************************
                 //****************************** WEB CONTROLLER ********************************
                 //******************************************************************************

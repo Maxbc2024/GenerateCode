@@ -108,8 +108,12 @@
             System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("ClaseNegocioGeneric");
             System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Negocio", new System.Windows.Forms.TreeNode[] {
             treeNode42});
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("V4 GENERIC", new System.Windows.Forms.TreeNode[] {
-            treeNode43});
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("MantenimientoGUI");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("GUI", new System.Windows.Forms.TreeNode[] {
+            treeNode44});
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("V4 GENERIC", new System.Windows.Forms.TreeNode[] {
+            treeNode43,
+            treeNode45});
             this.cmbTablasBD = new System.Windows.Forms.ComboBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -229,15 +233,19 @@
             treeNode42.Text = "ClaseNegocioGeneric";
             treeNode43.Name = "Nodo1";
             treeNode43.Text = "Negocio";
-            treeNode44.Name = "V4GENERIC";
-            treeNode44.Text = "V4 GENERIC";
+            treeNode44.Name = "MantenimientoGUIGeneric";
+            treeNode44.Text = "MantenimientoGUI";
+            treeNode45.Name = "Nodo0";
+            treeNode45.Text = "GUI";
+            treeNode46.Name = "V4GENERIC";
+            treeNode46.Text = "V4 GENERIC";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode11,
             treeNode19,
             treeNode28,
             treeNode35,
             treeNode41,
-            treeNode44});
+            treeNode46});
             this.treeView1.Size = new System.Drawing.Size(181, 686);
             this.treeView1.TabIndex = 6;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
