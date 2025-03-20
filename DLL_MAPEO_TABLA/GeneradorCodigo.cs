@@ -1890,9 +1890,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("//***********************************************************************************");
             p_Cadena.AppendLine("//***********************************************************************************");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Agregar_EstadoV2(p_objTabla).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Modificar_EstadoV2(p_objTabla).ToString());
+            p_Cadena.AppendLine(Clase_Negocio_Agregar_EstadoV3(p_objTabla).ToString());
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine(Clase_Negocio_Eliminar_EstadoV2(p_objTabla).ToString());
             p_Cadena.AppendLine("");
@@ -1915,6 +1913,30 @@ namespace DLL_MAPEO
 
         #endregion
 
+
+
+        public StringBuilder Clase_Negocio_Agregar_EstadoV3(Tabla p_objTabla)
+        {
+            StringBuilder p_Cadena = new StringBuilder();
+            p_Cadena.AppendLine("//********** AGREGAR **********************");
+            p_Cadena.AppendLine("public void  Agregar" + p_objTabla.Nombre + "(" + p_objTabla.Nombre + " p_obj" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("    if (p_obj" + p_objTabla.Nombre + ".Id ==  " + "\"" + "0" + "\"" + ")//");
+            p_Cadena.AppendLine("       {");
+            p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".Id = " + "\"" + "N" + "\"" + "+(Listado" + p_objTabla.Nombre + ".Count + 1);");
+            p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".estadoRegistro.EstadoRegistroCambiar(p_obj" + p_objTabla.Nombre + ".Id,TipoAccionBDV2.INSERT);");
+            p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("    if (Listado" + p_objTabla.Nombre + ".Exists(x => x.Id == p_obj" + p_objTabla.Nombre + ".Id) == true)");
+            p_Cadena.AppendLine("       {");
+            p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".estadoRegistro.EstadoRegistroCambiar(p_obj" + p_objTabla.Nombre + ".Id,TipoAccionBDV2.UPDATE);");
+            p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("     Else ");
+            p_Cadena.AppendLine("       {");
+            p_Cadena.AppendLine("         Listado" + p_objTabla.Nombre + ".Add(p_obj" + p_objTabla.Nombre + ");");
+            p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("}");
+            return p_Cadena;
+        }
 
         public StringBuilder Clase_Negocio_CargarListadoBd_V3(Tabla p_objTabla2)
         {
@@ -2323,6 +2345,32 @@ namespace DLL_MAPEO
             {
                 p_Cadena.AppendLine("obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + "= Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(this.txt" + objColumnas.NombreColumna + ".Text);");
             }
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("   objAdm"+p_objTabla.Nombre+".eventoCambio += new Adm" + p_objTabla.Nombre + ".EventHandlerCambio(OnEventHandlerCambio);");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public void OnEventHandlerCambio(string p_Tipo, string p_Id)");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   switch (p_Tipo)");
+            p_Cadena.AppendLine("   {");
+            p_Cadena.AppendLine("       case:" + "\""+"INSERT" +"\"" + ":");
+            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("       case:" + "\"" + "UPDATE" + "\"" + ":");
+            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("       case:" + "\"" + "DELETE" + "\"" + ":");
+            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("       case:" + "\"" + "LOAD" + "\"" + ":");
+            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("       case:" + "\"" + "SAVE" + "\"" + ":");
+            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("       default: ");
+            p_Cadena.AppendLine("           break; ");
+            p_Cadena.AppendLine("   }");
             p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("");
             return p_Cadena;

@@ -19,6 +19,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+
+
         private AdministradorTablas objAdministradorTablas1 = new AdministradorTablas();
         private AdmProcedure objAdmProcedure = new AdmProcedure();
         private void Form1_Load(object sender, EventArgs e)
