@@ -19,10 +19,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-
-
         private AdministradorTablas objAdministradorTablas1 = new AdministradorTablas();
         private AdmProcedure objAdmProcedure = new AdmProcedure();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.cmbTablasBD.DataSource = objAdministradorTablas1.ListarTabla();
@@ -53,26 +52,24 @@ namespace WindowsFormsApplication1
             
             switch (this.treeView1.SelectedNode.Name) 
             {
-                case "BeanEntidad":
-                    p_Impresion = objGeneradorCodigo.GenerarEntidades(objTabla);
-                    break;
-                case "InterfaceDao":
-                    p_Impresion = objGeneradorCodigo.InterfaceDAO(objTabla);
-                    break; 
-                case "SqlServer_Tabla_Dao":
-                    p_Impresion = objGeneradorCodigo.SqlServer_Tabla_DAO(objTabla);
-                    break;
-                case "ClaseNegocio":
-                    p_Impresion = objGeneradorCodigo.Clase_Negocio(objTabla, objTabla);
-                    break;
-                case "MantenimientoGUI":
-                    p_Impresion = objGeneradorCodigo.Clase_GUI_Mantenimiento(objTabla);
-                    break;
-                case "MantenimientoProcedure":
-                    p_Impresion = objGeneradorCodigo.Clase_GUI_Mantenimiento_Procedure(objTabla, p_TIPO_BASE_DATOS);
-                    break;
+                //case "BeanEntidad":
+                //    p_Impresion = objGeneradorCodigo.GenerarEntidades(objTabla);
+                //    break;
+                //case "InterfaceDao":
+                //    p_Impresion = objGeneradorCodigo.InterfaceDAO(objTabla);
+                //    break; 
+                //case "SqlServer_Tabla_Dao":
+                //    p_Impresion = objGeneradorCodigo.SqlServer_Tabla_DAO(objTabla);
+                //    break;
+                //case "ClaseNegocio":
+                //    p_Impresion = objGeneradorCodigo.Clase_Negocio(objTabla, objTabla);
+                //    break;
+                //case "MantenimientoGUI":
+                //    p_Impresion = objGeneradorCodigo.Clase_GUI_Mantenimiento(objTabla);
+                //    break;
+              
                 //******************************************************************************
-                //****************************** ESTADOV2 ********************************
+                //****************************** ESTADOV2 *************************************
                 //******************************************************************************
                 case "InterfaceDaoEstadoV2":
                     p_Impresion = objGeneradorCodigo.InterfaceDAO_EstadoV2(objTabla);
@@ -100,6 +97,9 @@ namespace WindowsFormsApplication1
                     break;
                 case "ClaseNegocioV3":
                     p_Impresion = objGeneradorCodigo.Clase_Negocio_V3(objTabla);
+                    break;
+                case "MantenimientoProcedure":
+                    p_Impresion = objGeneradorCodigo.Clase_GUI_Mantenimiento_Procedure(objTabla, p_TIPO_BASE_DATOS);
                     break;
                 //******************************************************************************
                 //****************************** V4 GENERIC ************************************

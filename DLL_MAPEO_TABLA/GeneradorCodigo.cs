@@ -15,21 +15,27 @@ namespace DLL_MAPEO
         //*************************** BEAN ENTIDAD *******************************************
         //************************************************************************************
         //************************************************************************************
-        public StringBuilder GenerarEntidades(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine(" public class Bean" + p_objTabla.Nombre + " {");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            {
-                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
-            }
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("    public string UsuarioRegistro { get; set; } ");
-            p_Cadena.AppendLine("    public EstadoRegistro estadoRegistro { get; set; }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
+        
+        //public StringBuilder GenerarEntidades(Tabla p_objTabla)
+        //{
+        //    //if (p_objTabla == null)
+        //    //{
+        //    //    throw new ArgumentNullException(nameof(p_objTabla), "La tabla no puede ser nula.");
+        //    //}
+
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine(" public class Bean" + p_objTabla.Nombre + " {");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+        //    {
+        //        p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
+        //    }
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("    public string UsuarioRegistro { get; set; } ");
+        //    p_Cadena.AppendLine("    public EstadoRegistro estadoRegistro { get; set; }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
 
         public StringBuilder GenerarEntidades_EstadoV2(Tabla p_objTabla)
         {
@@ -62,33 +68,33 @@ namespace DLL_MAPEO
 
         #region "Interface"
 
-        public StringBuilder InterfaceDAO(Tabla p_objTabla)
-        {
+        //public StringBuilder InterfaceDAO(Tabla p_objTabla)
+        //{
 
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public override I" + p_objTabla.Nombre + "DAO get" + p_objTabla.Nombre + "DAO()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("return  new SqlServer" + p_objTabla.Nombre + "DAO();");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine("--------------------------------------------------------------");
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine();
-            p_Cadena.AppendLine("public interface I" + p_objTabla.Nombre + "DAO");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("Boolean Insertar(List<Bean" + p_objTabla.Nombre + "> listado);");
-            p_Cadena.AppendLine("Bean" + p_objTabla.Nombre + " Insertar(Bean" + p_objTabla.Nombre + "  p_objBean" + p_objTabla.Nombre + "); ");
-            p_Cadena.AppendLine("Boolean Actualizar(List<Bean" + p_objTabla.Nombre + "> listado);");
-            p_Cadena.AppendLine("Boolean Eliminar(List<Bean" + p_objTabla.Nombre + "> listado);");
-            p_Cadena.AppendLine("Bean" + p_objTabla.Nombre + " Obtener(Bean" + p_objTabla.Nombre + " bean);");
-            p_Cadena.AppendLine("List<Bean" + p_objTabla.Nombre + "> ListarTodos();");
-            p_Cadena.AppendLine("List<Bean" + p_objTabla.Nombre + "> BuscarPor(Bean" + p_objTabla.Nombre + " bean);");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("public override I" + p_objTabla.Nombre + "DAO get" + p_objTabla.Nombre + "DAO()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("return  new SqlServer" + p_objTabla.Nombre + "DAO();");
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine("--------------------------------------------------------------");
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine();
+        //    p_Cadena.AppendLine("public interface I" + p_objTabla.Nombre + "DAO");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("Boolean Insertar(List<Bean" + p_objTabla.Nombre + "> listado);");
+        //    p_Cadena.AppendLine("Bean" + p_objTabla.Nombre + " Insertar(Bean" + p_objTabla.Nombre + "  p_objBean" + p_objTabla.Nombre + "); ");
+        //    p_Cadena.AppendLine("Boolean Actualizar(List<Bean" + p_objTabla.Nombre + "> listado);");
+        //    p_Cadena.AppendLine("Boolean Eliminar(List<Bean" + p_objTabla.Nombre + "> listado);");
+        //    p_Cadena.AppendLine("Bean" + p_objTabla.Nombre + " Obtener(Bean" + p_objTabla.Nombre + " bean);");
+        //    p_Cadena.AppendLine("List<Bean" + p_objTabla.Nombre + "> ListarTodos();");
+        //    p_Cadena.AppendLine("List<Bean" + p_objTabla.Nombre + "> BuscarPor(Bean" + p_objTabla.Nombre + " bean);");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
 
 
         public StringBuilder InterfaceDAO_EstadoV2(Tabla p_objTabla)
@@ -131,60 +137,60 @@ namespace DLL_MAPEO
 
         #region "Sql server dao"
 
-        public StringBuilder SqlServer_Tabla_DAO(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public class SqlServer" + p_objTabla.Nombre + "DAO : I" + p_objTabla.Nombre + "DAO");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public Boolean Insertar(List<Bean" + p_objTabla.Nombre + "> listado)");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(GeneraMetodoInsertar(p_objTabla).ToString());
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(GeneraMetodoInsertar2(p_objTabla).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public Boolean Actualizar(List<Bean" + p_objTabla.Nombre + "> listado)");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(GeneraMetodoActualizar(p_objTabla).ToString());
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(GeneraMetodoActualizar2(p_objTabla).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public Boolean Eliminar(List<Bean" + p_objTabla.Nombre + "> listado)");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(GeneraMetodoEliminar(p_objTabla).ToString());
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(GeneraMetodoEliminar2(p_objTabla).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public Bean" + p_objTabla.Nombre + " Obtener(Bean" + p_objTabla.Nombre + " p_objBean" + p_objTabla.Nombre + ")");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(GeneraMetodoObtener(p_objTabla).ToString());
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public List<Bean" + p_objTabla.Nombre + "> ListarTodos()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(GeneraMetodoListar(p_objTabla).ToString());
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
+        //public StringBuilder SqlServer_Tabla_DAO(Tabla p_objTabla)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("public class SqlServer" + p_objTabla.Nombre + "DAO : I" + p_objTabla.Nombre + "DAO");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public Boolean Insertar(List<Bean" + p_objTabla.Nombre + "> listado)");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(GeneraMetodoInsertar(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(GeneraMetodoInsertar2(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public Boolean Actualizar(List<Bean" + p_objTabla.Nombre + "> listado)");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(GeneraMetodoActualizar(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(GeneraMetodoActualizar2(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public Boolean Eliminar(List<Bean" + p_objTabla.Nombre + "> listado)");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(GeneraMetodoEliminar(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(GeneraMetodoEliminar2(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public Bean" + p_objTabla.Nombre + " Obtener(Bean" + p_objTabla.Nombre + " p_objBean" + p_objTabla.Nombre + ")");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(GeneraMetodoObtener(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public List<Bean" + p_objTabla.Nombre + "> ListarTodos()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(GeneraMetodoListar(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
 
         #region Metodos
 
@@ -285,7 +291,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("   arParms[" + i + "] = new SqlParameter(" + "\"@" + "UsuarioRegistro" + "\"" + ", SqlDbType." + "Char" + ");");
             p_Cadena.AppendLine("   arParms[" + i + "].Value = objBean" + p_objTabla.Nombre + ".UsuarioRegistro;");
             i = 0;
-            p_Cadena.AppendLine("     SqlHelper.ExecuteNonQuery(l_trans, CommandType.StoredProcedure, sql, arParms);");     
+            p_Cadena.AppendLine("     SqlHelper.ExecuteNonQuery(l_trans, CommandType.StoredProcedure, sql, arParms);");
             p_Cadena.AppendLine("   }");
             p_Cadena.AppendLine("     l_trans.Commit();");
             p_Cadena.AppendLine("}");
@@ -1323,6 +1329,8 @@ namespace DLL_MAPEO
             return p_Cadena;
         }
 
+
+
         //************************************************************************************
         //************************************************************************************
         //************************************ CLASE CONTROL *********************************
@@ -1333,309 +1341,309 @@ namespace DLL_MAPEO
 
 
 
-        public StringBuilder Clase_Negocio(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public class " + p_objTabla.Nombre + " {");
-            p_Cadena.AppendLine("    public string Id { get; set; } ");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            {
-                p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
-            }
-            p_Cadena.AppendLine("     public string UsuarioRegistro { get; set; }");
-            p_Cadena.AppendLine("     public EstadoRegistro estadoRegistro { get; set; }");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("private List<" + p_objTabla2.Nombre + "> Listado" + p_objTabla2.Nombre + " = null;");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Constructor(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("//***********************************************************************************");
-            p_Cadena.AppendLine("//***********************************************************************************");
-            p_Cadena.AppendLine("//****************************" + p_objTabla2.Nombre + "****************************");
-            p_Cadena.AppendLine("//***********************************************************************************");
-            p_Cadena.AppendLine("//***********************************************************************************");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Agregar(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Eliminar(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Listar(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_Obtener(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_CargarListadoBd(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_DeshacerCambio(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_GuardarCambio(p_objTabla, p_objTabla2).ToString());
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_Negocio_GuardarCambio2(p_objTabla, p_objTabla2).ToString());
-            return p_Cadena;
-        }
+        //public StringBuilder Clase_Negocio(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("public class " + p_objTabla.Nombre + " {");
+        //    p_Cadena.AppendLine("    public string Id { get; set; } ");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+        //    {
+        //        p_Cadena.AppendLine("    public " + ConvertirTipoDatoSQLTO_C(objColumnas.TipoDato) + "  " + objColumnas.NombreColumna + "{ get; set; } ");
+        //    }
+        //    p_Cadena.AppendLine("     public string UsuarioRegistro { get; set; }");
+        //    p_Cadena.AppendLine("     public EstadoRegistro estadoRegistro { get; set; }");
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("private List<" + p_objTabla2.Nombre + "> Listado" + p_objTabla2.Nombre + " = null;");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_Constructor(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("//***********************************************************************************");
+        //    p_Cadena.AppendLine("//***********************************************************************************");
+        //    p_Cadena.AppendLine("//****************************" + p_objTabla2.Nombre + "****************************");
+        //    p_Cadena.AppendLine("//***********************************************************************************");
+        //    p_Cadena.AppendLine("//***********************************************************************************");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_Agregar(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_Eliminar(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_Listar(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_Obtener(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_CargarListadoBd(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_DeshacerCambio(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_GuardarCambio(p_objTabla, p_objTabla2).ToString());
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_Negocio_GuardarCambio2(p_objTabla, p_objTabla2).ToString());
+        //    return p_Cadena;
+        //}
 
       
 
-        #region Metodos
+        //#region Metodos
 
 
-        public StringBuilder Clase_Negocio_Constructor(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public " + p_objTabla.Nombre + "()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("    Listado" + p_objTabla2.Nombre + " = new List<" + p_objTabla2.Nombre + ">();");
-            p_Cadena.AppendLine("    this.Id = " + "\"" + "0" + "\"" + ";");
-            //foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            //{
-            //    p_Cadena.AppendLine("    this." + objColumnas.NombreColumna + "=" + F_TipoDatoInicializarDatos_C(objColumnas) + ";");
-            //}
-            p_Cadena.AppendLine("     this.estadoRegistro = new EstadoRegistro(EstadoMetodo.ObtenerEstadoActivoPublicado());");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public " + p_objTabla.Nombre + "(int p_Nro" + p_objTabla.Nombre + ")");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
-            p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
-            p_Cadena.AppendLine("     Bean" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = objI" + p_objTabla2.Nombre + "DAO.ObtenerXNro" + p_objTabla2.Nombre + "(p_Nro" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("     this.Id =  Convert.ToString(objBean" + p_objTabla2.Nombre + ".Id" + p_objTabla2.Nombre + ");");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
-            {
-                p_Cadena.AppendLine("    this." + objColumnas.NombreColumna + "= objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
-            }
-            p_Cadena.AppendLine("    this.estadoRegistro = new EstadoRegistro(objBean" + p_objTabla2.Nombre + ".Estado);");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            return p_Cadena;
-        }
-        public StringBuilder Clase_Negocio_Agregar(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("//********** AGREGAR MODFICAR **********************");
-            p_Cadena.AppendLine("public " + p_objTabla2.Nombre + " Agregar" + p_objTabla2.Nombre + "(" + p_objTabla2.Nombre + " p_obj" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("    " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = null;");
-            p_Cadena.AppendLine("    bool ExisteRegistro = false; ");
-            p_Cadena.AppendLine("    if (p_obj" + p_objTabla2.Nombre + ".Id ==  " + "\"" + "0" + "\"" + ")//" + "********** NUEVO *************");
-            p_Cadena.AppendLine("       {");
-            p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + " = p_obj" + p_objTabla2.Nombre + ";");
-            p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".Id = " + "\"" + "N" + "\"" + "+(Listado" + p_objTabla2.Nombre + ".Count + 1);");
-            p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(obj" + p_objTabla2.Nombre + ".Id,p_obj" + p_objTabla2.Nombre + ".estadoRegistro.Estado, TipoAccion.NUEVO);");
-            p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Add(obj" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         ExisteRegistro = true;");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("     else //********** MODIFICAR *************");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("      " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + "2 = null;");
-            p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " objEntidad in Listado" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("          if (objEntidad.Id == p_obj" + p_objTabla2.Nombre + ".Id)");
-            p_Cadena.AppendLine("             {");
-            p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2 = objEntidad;");
-            p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2 = p_obj" + p_objTabla2.Nombre + ";");
-            p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2.estadoRegistro = new EstadoRegistro(obj" + p_objTabla2.Nombre + "2.Id,obj" + p_objTabla2.Nombre + "2.estadoRegistro.Estado,TipoAccion.MODIFICAR);");
-            p_Cadena.AppendLine("              obj" + p_objTabla2.Nombre + " = obj" + p_objTabla2.Nombre + "2;");
-            p_Cadena.AppendLine("               ExisteRegistro = true; ");
-            p_Cadena.AppendLine("               break; ");
-            p_Cadena.AppendLine("             }");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("          if (ExisteRegistro == false)");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("        Listado" + p_objTabla2.Nombre + ".Add(p_obj" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("        obj" + p_objTabla2.Nombre + " = p_obj" + p_objTabla2.Nombre + ";");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("     ");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("      return obj" + p_objTabla2.Nombre + ";");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
+        //public StringBuilder Clase_Negocio_Constructor(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("public " + p_objTabla.Nombre + "()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("    Listado" + p_objTabla2.Nombre + " = new List<" + p_objTabla2.Nombre + ">();");
+        //    p_Cadena.AppendLine("    this.Id = " + "\"" + "0" + "\"" + ";");
+        //    //foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+        //    //{
+        //    //    p_Cadena.AppendLine("    this." + objColumnas.NombreColumna + "=" + F_TipoDatoInicializarDatos_C(objColumnas) + ";");
+        //    //}
+        //    p_Cadena.AppendLine("     this.estadoRegistro = new EstadoRegistro(EstadoMetodo.ObtenerEstadoActivoPublicado());");
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("public " + p_objTabla.Nombre + "(int p_Nro" + p_objTabla.Nombre + ")");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+        //    p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+        //    p_Cadena.AppendLine("     Bean" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = objI" + p_objTabla2.Nombre + "DAO.ObtenerXNro" + p_objTabla2.Nombre + "(p_Nro" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("     this.Id =  Convert.ToString(objBean" + p_objTabla2.Nombre + ".Id" + p_objTabla2.Nombre + ");");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
+        //    {
+        //        p_Cadena.AppendLine("    this." + objColumnas.NombreColumna + "= objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
+        //    }
+        //    p_Cadena.AppendLine("    this.estadoRegistro = new EstadoRegistro(objBean" + p_objTabla2.Nombre + ".Estado);");
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    return p_Cadena;
+        //}
+        //public StringBuilder Clase_Negocio_Agregar(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("//********** AGREGAR MODFICAR **********************");
+        //    p_Cadena.AppendLine("public " + p_objTabla2.Nombre + " Agregar" + p_objTabla2.Nombre + "(" + p_objTabla2.Nombre + " p_obj" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("    " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = null;");
+        //    p_Cadena.AppendLine("    bool ExisteRegistro = false; ");
+        //    p_Cadena.AppendLine("    if (p_obj" + p_objTabla2.Nombre + ".Id ==  " + "\"" + "0" + "\"" + ")//" + "********** NUEVO *************");
+        //    p_Cadena.AppendLine("       {");
+        //    p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + " = p_obj" + p_objTabla2.Nombre + ";");
+        //    p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".Id = " + "\"" + "N" + "\"" + "+(Listado" + p_objTabla2.Nombre + ".Count + 1);");
+        //    p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(obj" + p_objTabla2.Nombre + ".Id,p_obj" + p_objTabla2.Nombre + ".estadoRegistro.Estado, TipoAccion.NUEVO);");
+        //    p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Add(obj" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         ExisteRegistro = true;");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("     else //********** MODIFICAR *************");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("      " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + "2 = null;");
+        //    p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " objEntidad in Listado" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("          if (objEntidad.Id == p_obj" + p_objTabla2.Nombre + ".Id)");
+        //    p_Cadena.AppendLine("             {");
+        //    p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2 = objEntidad;");
+        //    p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2 = p_obj" + p_objTabla2.Nombre + ";");
+        //    p_Cadena.AppendLine("                 obj" + p_objTabla2.Nombre + "2.estadoRegistro = new EstadoRegistro(obj" + p_objTabla2.Nombre + "2.Id,obj" + p_objTabla2.Nombre + "2.estadoRegistro.Estado,TipoAccion.MODIFICAR);");
+        //    p_Cadena.AppendLine("              obj" + p_objTabla2.Nombre + " = obj" + p_objTabla2.Nombre + "2;");
+        //    p_Cadena.AppendLine("               ExisteRegistro = true; ");
+        //    p_Cadena.AppendLine("               break; ");
+        //    p_Cadena.AppendLine("             }");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("          if (ExisteRegistro == false)");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("        Listado" + p_objTabla2.Nombre + ".Add(p_obj" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("        obj" + p_objTabla2.Nombre + " = p_obj" + p_objTabla2.Nombre + ";");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("     ");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("      return obj" + p_objTabla2.Nombre + ";");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
 
-        }
+        //}
 
        
 
 
 
-        public StringBuilder Clase_Negocio_Eliminar(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("//********** ELIMINAR **********************");
-            p_Cadena.AppendLine("public void Eliminar" + p_objTabla2.Nombre + "(String Id)");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("          if ( obj" + p_objTabla2.Nombre + ".Id == Id)");
-            p_Cadena.AppendLine("             {");
-            p_Cadena.AppendLine("              obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(Id, obj" + p_objTabla2.Nombre + ".estadoRegistro.Estado,TipoAccion.ELIMINAR);");
-            p_Cadena.AppendLine("             }");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
+        //public StringBuilder Clase_Negocio_Eliminar(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("//********** ELIMINAR **********************");
+        //    p_Cadena.AppendLine("public void Eliminar" + p_objTabla2.Nombre + "(String Id)");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("          if ( obj" + p_objTabla2.Nombre + ".Id == Id)");
+        //    p_Cadena.AppendLine("             {");
+        //    p_Cadena.AppendLine("              obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(Id, obj" + p_objTabla2.Nombre + ".estadoRegistro.Estado,TipoAccion.ELIMINAR);");
+        //    p_Cadena.AppendLine("             }");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
 
-        public StringBuilder Clase_Negocio_Listar(Tabla p_objTabla, Tabla p_objTabla2)
-        {
+        //public StringBuilder Clase_Negocio_Listar(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
 
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("//********** LISTAR **********************");
-            p_Cadena.AppendLine("public List<" + p_objTabla2.Nombre + "> Listar" + p_objTabla2.Nombre + "()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("     return Listado" + p_objTabla2.Nombre + ";");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("//********** LISTAR **********************");
+        //    p_Cadena.AppendLine("public List<" + p_objTabla2.Nombre + "> Listar" + p_objTabla2.Nombre + "()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("     return Listado" + p_objTabla2.Nombre + ";");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
 
-        }
-        public StringBuilder Clase_Negocio_Obtener(Tabla p_objTabla, Tabla p_objTabla2)
-        {
+        //}
+        //public StringBuilder Clase_Negocio_Obtener(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
 
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine(" //*********** OBTENER ***********************");
-            p_Cadena.AppendLine("public " + p_objTabla2.Nombre + " Obtener" + p_objTabla2.Nombre + "XId(string Id)");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine(" " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = null;");
-            p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + "2 in Listado" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("             if ( obj" + p_objTabla2.Nombre + "2.Id == Id)");
-            p_Cadena.AppendLine("                 {");
-            p_Cadena.AppendLine("                     obj" + p_objTabla2.Nombre + " = obj" + p_objTabla2.Nombre + "2;");
-            p_Cadena.AppendLine("                     break;");
-            p_Cadena.AppendLine("                 }");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("         return obj" + p_objTabla2.Nombre + "; ");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
-        public StringBuilder Clase_Negocio_CargarListadoBd(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("//********** CARGAR LISTADO BD ***************");
-            p_Cadena.AppendLine(" private void Cargar" + p_objTabla2.Nombre + "()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Clear();");
-            p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
-            p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
-            p_Cadena.AppendLine("      foreach (Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " in objI" + p_objTabla2.Nombre + "DAO.ListarTodos())");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("          " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = new " + p_objTabla2.Nombre + "();");
-            p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".Id = Convert.ToString(objBean" + p_objTabla2.Nombre + ".Id" + p_objTabla2.Nombre + ");");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
-            {
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine(" //*********** OBTENER ***********************");
+        //    p_Cadena.AppendLine("public " + p_objTabla2.Nombre + " Obtener" + p_objTabla2.Nombre + "XId(string Id)");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine(" " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = null;");
+        //    p_Cadena.AppendLine("      foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + "2 in Listado" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("             if ( obj" + p_objTabla2.Nombre + "2.Id == Id)");
+        //    p_Cadena.AppendLine("                 {");
+        //    p_Cadena.AppendLine("                     obj" + p_objTabla2.Nombre + " = obj" + p_objTabla2.Nombre + "2;");
+        //    p_Cadena.AppendLine("                     break;");
+        //    p_Cadena.AppendLine("                 }");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("         return obj" + p_objTabla2.Nombre + "; ");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
+        //public StringBuilder Clase_Negocio_CargarListadoBd(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("//********** CARGAR LISTADO BD ***************");
+        //    p_Cadena.AppendLine(" private void Cargar" + p_objTabla2.Nombre + "()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Clear();");
+        //    p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+        //    p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+        //    p_Cadena.AppendLine("      foreach (Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " in objI" + p_objTabla2.Nombre + "DAO.ListarTodos())");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("          " + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " = new " + p_objTabla2.Nombre + "();");
+        //    p_Cadena.AppendLine("         obj" + p_objTabla2.Nombre + ".Id = Convert.ToString(objBean" + p_objTabla2.Nombre + ".Id" + p_objTabla2.Nombre + ");");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
+        //    {
 
-                p_Cadena.AppendLine("   obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
-            }
-            p_Cadena.AppendLine("   obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(objBean" + p_objTabla2.Nombre + ".Estado);");
-            p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Add(obj" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
+        //        p_Cadena.AppendLine("   obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
+        //    }
+        //    p_Cadena.AppendLine("   obj" + p_objTabla2.Nombre + ".estadoRegistro = new EstadoRegistro(objBean" + p_objTabla2.Nombre + ".Estado);");
+        //    p_Cadena.AppendLine("         Listado" + p_objTabla2.Nombre + ".Add(obj" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
 
-        }
-        public StringBuilder Clase_Negocio_DeshacerCambio(Tabla p_objTabla, Tabla p_objTabla2)
-        {
+        //}
+        //public StringBuilder Clase_Negocio_DeshacerCambio(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
 
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("//*********** DESHACER CAMBIOS ***************");
-            p_Cadena.AppendLine(" public void CancelarCambios" + p_objTabla2.Nombre + "()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
-        }
-        public StringBuilder Clase_Negocio_GuardarCambio(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine(" //*********** GUARDAR CAMBIOS ***************");
-            p_Cadena.AppendLine(" public void Guardar" + p_objTabla2.Nombre + "()");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
-            p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
-            p_Cadena.AppendLine(" ");
-            p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoInsertar = new List<Bean" + p_objTabla2.Nombre + ">(); ");
-            p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoActualizacion = new List<Bean" + p_objTabla2.Nombre + ">(); ");
-            p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoEliminacion = new List<Bean" + p_objTabla2.Nombre + ">(); ");
-            p_Cadena.AppendLine(" ");
-            p_Cadena.AppendLine("     foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ") ");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("            int Id = 0;");
-            p_Cadena.AppendLine("            Int32.TryParse(obj" + p_objTabla2.Nombre + ".Id, out Id);");
-            p_Cadena.AppendLine("            Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " = new Bean" + p_objTabla2.Nombre + "();");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
-            {
-                p_Cadena.AppendLine("   objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
-            }
-            p_Cadena.AppendLine("       objBean" + p_objTabla2.Nombre + ".Estado = obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoEstadoBD;");
-            p_Cadena.AppendLine("       if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("             listadoInsertar.Add(objBean" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("             listadoActualizacion.Add(objBean" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("             listadoEliminacion.Add(objBean" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("}");
-            p_Cadena.AppendLine("  if (listadoInsertar.Count > 0) ");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Insertar(listadoInsertar);");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("  if (listadoActualizacion.Count > 0) ");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(listadoActualizacion);");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("  if (listadoEliminacion.Count > 0) ");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(listadoEliminacion);");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("}");
-            return p_Cadena;
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("//*********** DESHACER CAMBIOS ***************");
+        //    p_Cadena.AppendLine(" public void CancelarCambios" + p_objTabla2.Nombre + "()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
+        //}
+        //public StringBuilder Clase_Negocio_GuardarCambio(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine(" //*********** GUARDAR CAMBIOS ***************");
+        //    p_Cadena.AppendLine(" public void Guardar" + p_objTabla2.Nombre + "()");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+        //    p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+        //    p_Cadena.AppendLine(" ");
+        //    p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoInsertar = new List<Bean" + p_objTabla2.Nombre + ">(); ");
+        //    p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoActualizacion = new List<Bean" + p_objTabla2.Nombre + ">(); ");
+        //    p_Cadena.AppendLine("     List<Bean" + p_objTabla2.Nombre + "> listadoEliminacion = new List<Bean" + p_objTabla2.Nombre + ">(); ");
+        //    p_Cadena.AppendLine(" ");
+        //    p_Cadena.AppendLine("     foreach (" + p_objTabla2.Nombre + " obj" + p_objTabla2.Nombre + " in Listado" + p_objTabla2.Nombre + ") ");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("            int Id = 0;");
+        //    p_Cadena.AppendLine("            Int32.TryParse(obj" + p_objTabla2.Nombre + ".Id, out Id);");
+        //    p_Cadena.AppendLine("            Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " = new Bean" + p_objTabla2.Nombre + "();");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
+        //    {
+        //        p_Cadena.AppendLine("   objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
+        //    }
+        //    p_Cadena.AppendLine("       objBean" + p_objTabla2.Nombre + ".Estado = obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoEstadoBD;");
+        //    p_Cadena.AppendLine("       if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("             listadoInsertar.Add(objBean" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("             listadoActualizacion.Add(objBean" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("      else if (obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("             listadoEliminacion.Add(objBean" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("}");
+        //    p_Cadena.AppendLine("  if (listadoInsertar.Count > 0) ");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Insertar(listadoInsertar);");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("  if (listadoActualizacion.Count > 0) ");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Actualizar(listadoActualizacion);");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("  if (listadoEliminacion.Count > 0) ");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("      objI" + p_objTabla2.Nombre + "DAO.Eliminar(listadoEliminacion);");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("}");
+        //    return p_Cadena;
 
-        }
-        public StringBuilder Clase_Negocio_GuardarCambio2(Tabla p_objTabla, Tabla p_objTabla2)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine(" //*********** GUARDAR CAMBIOS ***************");
-            p_Cadena.AppendLine(" public void Guardar" + p_objTabla2.Nombre + "(" + p_objTabla2.Nombre + " p_obj" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("{");
-            p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
-            p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
-            p_Cadena.AppendLine(" ");
-            p_Cadena.AppendLine(" ");
-            p_Cadena.AppendLine("            int Id = 0;");
-            p_Cadena.AppendLine("            Int32.TryParse(p_obj" + p_objTabla2.Nombre + ".Id, out Id);");
-            p_Cadena.AppendLine("            Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " = new Bean" + p_objTabla2.Nombre + "();");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
-            {
-                p_Cadena.AppendLine("   objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= p_obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
-            }
-            p_Cadena.AppendLine("       objBean" + p_objTabla2.Nombre + ".Estado = obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoEstadoBD;");
-            p_Cadena.AppendLine("       int p_Nro" + p_objTabla2.Nombre + "=0;");
-            p_Cadena.AppendLine("       if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("              p_Nro" + p_objTabla2.Nombre + "=objI" + p_objTabla2.Nombre + "DAO.Insertar(objBean" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("              p_Nro" + p_objTabla2.Nombre + "=objI" + p_objTabla2.Nombre + "DAO.Actualizar(objBean" + p_objTabla2.Nombre + ");");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("      else if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
-            p_Cadena.AppendLine("         {");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("         }");
-            p_Cadena.AppendLine("         return new " + p_objTabla2.Nombre + "(p_Nro" + p_objTabla2.Nombre + ")");
-            p_Cadena.AppendLine("}");
+        //}
+        //public StringBuilder Clase_Negocio_GuardarCambio2(Tabla p_objTabla, Tabla p_objTabla2)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine(" //*********** GUARDAR CAMBIOS ***************");
+        //    p_Cadena.AppendLine(" public void Guardar" + p_objTabla2.Nombre + "(" + p_objTabla2.Nombre + " p_obj" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("{");
+        //    p_Cadena.AppendLine("     DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+        //    p_Cadena.AppendLine("     I" + p_objTabla2.Nombre + "DAO objI" + p_objTabla2.Nombre + "DAO = objDAOFactory.get" + p_objTabla2.Nombre + "DAO();");
+        //    p_Cadena.AppendLine(" ");
+        //    p_Cadena.AppendLine(" ");
+        //    p_Cadena.AppendLine("            int Id = 0;");
+        //    p_Cadena.AppendLine("            Int32.TryParse(p_obj" + p_objTabla2.Nombre + ".Id, out Id);");
+        //    p_Cadena.AppendLine("            Bean" + p_objTabla2.Nombre + " objBean" + p_objTabla2.Nombre + " = new Bean" + p_objTabla2.Nombre + "();");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnasSinEstado())
+        //    {
+        //        p_Cadena.AppendLine("   objBean" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + "= p_obj" + p_objTabla2.Nombre + "." + objColumnas.NombreColumna + ";");
+        //    }
+        //    p_Cadena.AppendLine("       objBean" + p_objTabla2.Nombre + ".Estado = obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoEstadoBD;");
+        //    p_Cadena.AppendLine("       int p_Nro" + p_objTabla2.Nombre + "=0;");
+        //    p_Cadena.AppendLine("       if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.INSERT) ");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("              p_Nro" + p_objTabla2.Nombre + "=objI" + p_objTabla2.Nombre + "DAO.Insertar(objBean" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("      else if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.UPDATE)");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("              p_Nro" + p_objTabla2.Nombre + "=objI" + p_objTabla2.Nombre + "DAO.Actualizar(objBean" + p_objTabla2.Nombre + ");");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("      else if (p_obj" + p_objTabla2.Nombre + ".estadoRegistro.TipoBD == TipoAccionBD.DELETE)");
+        //    p_Cadena.AppendLine("         {");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("         }");
+        //    p_Cadena.AppendLine("         return new " + p_objTabla2.Nombre + "(p_Nro" + p_objTabla2.Nombre + ")");
+        //    p_Cadena.AppendLine("}");
 
-            return p_Cadena;
-        }
-        #endregion
+        //    return p_Cadena;
+        //}
+        //#endregion
 
         #endregion
 
@@ -1651,7 +1659,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("private List<" + p_objTabla.Nombre + "> Listado" + p_objTabla.Nombre + " = null;");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("public " + p_objTabla.Nombre + " {");
+            p_Cadena.AppendLine("public " + p_objTabla.Nombre + "()");
             p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("   Listado" + p_objTabla.Nombre + " = new List<" + p_objTabla.Nombre + ">();");
             p_Cadena.AppendLine("}");
@@ -1860,10 +1868,9 @@ namespace DLL_MAPEO
         public StringBuilder Clase_Negocio_V3(Tabla p_objTabla)
         {
             StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("public class Adm" + p_objTabla.Nombre + " {");
+            p_Cadena.AppendLine("public class Adm" + p_objTabla.Nombre);
+            p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-
             p_Cadena.AppendLine("private static Adm" + p_objTabla.Nombre + " instance = null;");
             p_Cadena.AppendLine("public static Adm" + p_objTabla.Nombre + " Instance()");
             p_Cadena.AppendLine("{");
@@ -1882,7 +1889,28 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("   Listado" + p_objTabla.Nombre + " = new List<" + p_objTabla.Nombre + ">();");
             p_Cadena.AppendLine("}");
-
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public string Nuevo(int p_Id" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   if (p_IdTransportista == 0)");
+            p_Cadena.AppendLine("   {");
+            p_Cadena.AppendLine("       " + p_objTabla.Nombre + " objEntidad = new " + p_objTabla.Nombre + "();");
+            p_Cadena.AppendLine("       return this.Agregar" + p_objTabla.Nombre + "(objEntidad);");
+            p_Cadena.AppendLine("   }");
+            p_Cadena.AppendLine("   else");
+            p_Cadena.AppendLine("   {");
+            p_Cadena.AppendLine("       " + p_objTabla.Nombre + " objEntidad = this.Obtener_x_Id" + p_objTabla.Nombre + "(p_Id" + p_objTabla.Nombre + ");");
+            p_Cadena.AppendLine("       return this.Agregar" + p_objTabla.Nombre + "(objEntidad);");
+            p_Cadena.AppendLine("   }");
+            p_Cadena.AppendLine("}");
+            p_Cadena.AppendLine("");
+            p_Cadena.AppendLine("public " + p_objTabla.Nombre + " Obtener_x_Id" + p_objTabla.Nombre + "(double p_Id" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("{");
+            p_Cadena.AppendLine("   DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);");
+            p_Cadena.AppendLine("   SqlServer" + p_objTabla.Nombre + "DAO obj" + p_objTabla.Nombre + "DAO = objDAOFactory.get" + p_objTabla.Nombre + "DAO();");
+            p_Cadena.AppendLine("   return obj" + p_objTabla.Nombre + "DAO.Obtener(p_Id" + p_objTabla.Nombre + ");");
+            p_Cadena.AppendLine("}");
             p_Cadena.AppendLine("");
             p_Cadena.AppendLine("//***********************************************************************************");
             p_Cadena.AppendLine("//***********************************************************************************");
@@ -1919,7 +1947,7 @@ namespace DLL_MAPEO
         {
             StringBuilder p_Cadena = new StringBuilder();
             p_Cadena.AppendLine("//********** AGREGAR **********************");
-            p_Cadena.AppendLine("public void  Agregar" + p_objTabla.Nombre + "(" + p_objTabla.Nombre + " p_obj" + p_objTabla.Nombre + ")");
+            p_Cadena.AppendLine("public string  Agregar" + p_objTabla.Nombre + "(" + p_objTabla.Nombre + " p_obj" + p_objTabla.Nombre + ")");
             p_Cadena.AppendLine("{");
             p_Cadena.AppendLine("    if (p_obj" + p_objTabla.Nombre + ".Id ==  " + "\"" + "0" + "\"" + ")//");
             p_Cadena.AppendLine("       {");
@@ -1930,10 +1958,11 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("       {");
             p_Cadena.AppendLine("         p_obj" + p_objTabla.Nombre + ".estadoRegistro.EstadoRegistroCambiar(p_obj" + p_objTabla.Nombre + ".Id,TipoAccionBDV2.UPDATE);");
             p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("     Else ");
+            p_Cadena.AppendLine("     else ");
             p_Cadena.AppendLine("       {");
             p_Cadena.AppendLine("         Listado" + p_objTabla.Nombre + ".Add(p_obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("     }");
+            p_Cadena.AppendLine("     return p_obj" + p_objTabla.Nombre + ".Id");
             p_Cadena.AppendLine("}");
             return p_Cadena;
         }
@@ -2385,159 +2414,159 @@ namespace DLL_MAPEO
 
         #region "Mantenimiento GUI"
 
-        public StringBuilder Clase_GUI_Mantenimiento(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(Clase_GUI_GenerarContenidoGUI(p_objTabla).ToString());
-            p_Cadena.AppendLine("");
-            return p_Cadena;
-        }
+        //public StringBuilder Clase_GUI_Mantenimiento(Tabla p_objTabla)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(Clase_GUI_GenerarContenidoGUI(p_objTabla).ToString());
+        //    p_Cadena.AppendLine("");
+        //    return p_Cadena;
+        //}
 
         
 
-        public StringBuilder Clase_GUI_GenerarContenidoGUI(Tabla p_objTabla)
-        {
-            StringBuilder p_Cadena = new StringBuilder();
-            p_Cadena.AppendLine(" this.grvListado" + p_objTabla.Nombre + ".RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvListado_RowEnter);");
-            p_Cadena.AppendLine(" this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);");
-            p_Cadena.AppendLine(" this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);");
-            p_Cadena.AppendLine(" this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);");
-            p_Cadena.AppendLine(" this.btnCancelarCambios.Click += new System.EventHandler(this.btnCancelarCambios_Click);");
-            p_Cadena.AppendLine(" this.btnGuardarBd.Click += new System.EventHandler(this.btnGuardarBd_Click);");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("//******************************************  " + p_objTabla.Nombre.ToUpper() + " **************************************************************");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("//*******************************************************************************************************************************");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(" private void grvListado_RowEnter(object sender, DataGridViewCellEventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         Int32 i = e.RowIndex;");
-            p_Cadena.AppendLine("         Seleccionar(e.RowIndex);");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  private void btnNuevo_Click(object sender, EventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         Nuevo();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("private void btnInsertar_Click(object sender, EventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         Insertar();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(" private void btnEliminar_Click(object sender, EventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         Eliminar();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("private void btnCancelarCambios_Click(object sender, EventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         CancelarCambio();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(" private void btnGuardarBd_Click(object sender, EventArgs e)");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("         GuardarCambio();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  private void Seleccionar(int p_Fila){ ");
-            p_Cadena.AppendLine("   string p_Id; ");
-            p_Cadena.AppendLine("   Int32 i = p_Fila; ");
-            p_Cadena.AppendLine("    if (i >= 0){ ");
-            p_Cadena.AppendLine("     p_Id = Convert.ToString(this.grvListado" + p_objTabla.Nombre + ".Rows[i].Cells[" + "\"" + "ColId" + "\"" + "].Value);");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
-            p_Cadena.AppendLine("    Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("    } ");
-            p_Cadena.AppendLine("    } ");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  private void SeleccionarRegistro(string p_Id){ ");
-            p_Cadena.AppendLine("   foreach (DataGridViewRow objRow in this.grvListado" + p_objTabla.Nombre + ".Rows) ");
-            p_Cadena.AppendLine("    { ");
-            p_Cadena.AppendLine("    objRow.Selected = false;");
-            p_Cadena.AppendLine("    } ");
-            p_Cadena.AppendLine("    foreach (DataGridViewRow objRow in this.grvListado" + p_objTabla.Nombre + ".Rows)");
-            p_Cadena.AppendLine("       { ");
-            p_Cadena.AppendLine("    if (Convert.ToString(objRow.Cells[" + "\"" + "ColId" + "\"" + "].Value) == p_Id) ");
-            p_Cadena.AppendLine("           { ");
-            p_Cadena.AppendLine("               objRow.Selected = true; ");
-            p_Cadena.AppendLine("               this.grvListado" + p_objTabla.Nombre + ".CurrentCell=objRow.Cells["+ "\"" +"ColId"+ "\"" + "];");
-            p_Cadena.AppendLine("               break;");
-            p_Cadena.AppendLine("           } ");
-            p_Cadena.AppendLine("       } ");
-            p_Cadena.AppendLine("    } ");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("     private void Nuevo()");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("          " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = new " + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("          obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("          CargarGrid" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("          SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id);");
-            p_Cadena.AppendLine("          Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("     private void Insertar()");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
-            p_Cadena.AppendLine("     Obtener" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("     obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("     CargarGrid" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("     SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id);");
-            p_Cadena.AppendLine("     Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("     private void Eliminar()");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
-            p_Cadena.AppendLine("        objAdministrador" + p_objTabla.Nombre + ".Eliminar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
-            p_Cadena.AppendLine("        CargarGrid" + p_objTabla.Nombre + "(); ");
-            p_Cadena.AppendLine("        SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id); ");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("     private void CancelarCambio()");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("          objAdministrador" + p_objTabla.Nombre + ".CancelarCambios" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("     private void GuardarCambio()");
-            p_Cadena.AppendLine("     {");
-            p_Cadena.AppendLine("           objAdministrador" + p_objTabla.Nombre + ".Guardar" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("  private void Cargar" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
-            p_Cadena.AppendLine("  {");
-            p_Cadena.AppendLine("     this.txtId.Text = Convert.ToString(obj" + p_objTabla.Nombre + ".Id);");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            {
-                p_Cadena.AppendLine(" this.txt" + objColumnas.NombreColumna + ".Text = Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + ");");
-            }
-            p_Cadena.AppendLine(" }");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine("");
-            p_Cadena.AppendLine(" private void Obtener" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
-            p_Cadena.AppendLine("     {");
-            foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
-            {
-                p_Cadena.AppendLine("obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + "= Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(this.txt" + objColumnas.NombreColumna + ".Text);");
-            }
-            p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("");
-            return p_Cadena;
-        }
+        //public StringBuilder Clase_GUI_GenerarContenidoGUI(Tabla p_objTabla)
+        //{
+        //    StringBuilder p_Cadena = new StringBuilder();
+        //    p_Cadena.AppendLine(" this.grvListado" + p_objTabla.Nombre + ".RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvListado_RowEnter);");
+        //    p_Cadena.AppendLine(" this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);");
+        //    p_Cadena.AppendLine(" this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);");
+        //    p_Cadena.AppendLine(" this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);");
+        //    p_Cadena.AppendLine(" this.btnCancelarCambios.Click += new System.EventHandler(this.btnCancelarCambios_Click);");
+        //    p_Cadena.AppendLine(" this.btnGuardarBd.Click += new System.EventHandler(this.btnGuardarBd_Click);");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("//******************************************  " + p_objTabla.Nombre.ToUpper() + " **************************************************************");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("//*******************************************************************************************************************************");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(" private void grvListado_RowEnter(object sender, DataGridViewCellEventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         Int32 i = e.RowIndex;");
+        //    p_Cadena.AppendLine("         Seleccionar(e.RowIndex);");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("  private void btnNuevo_Click(object sender, EventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         Nuevo();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("private void btnInsertar_Click(object sender, EventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         Insertar();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(" private void btnEliminar_Click(object sender, EventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         Eliminar();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("private void btnCancelarCambios_Click(object sender, EventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         CancelarCambio();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(" private void btnGuardarBd_Click(object sender, EventArgs e)");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("         GuardarCambio();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("  private void Seleccionar(int p_Fila){ ");
+        //    p_Cadena.AppendLine("   string p_Id; ");
+        //    p_Cadena.AppendLine("   Int32 i = p_Fila; ");
+        //    p_Cadena.AppendLine("    if (i >= 0){ ");
+        //    p_Cadena.AppendLine("     p_Id = Convert.ToString(this.grvListado" + p_objTabla.Nombre + ".Rows[i].Cells[" + "\"" + "ColId" + "\"" + "].Value);");
+        //    p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(p_Id);");
+        //    p_Cadena.AppendLine("    Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("    } ");
+        //    p_Cadena.AppendLine("    } ");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("  private void SeleccionarRegistro(string p_Id){ ");
+        //    p_Cadena.AppendLine("   foreach (DataGridViewRow objRow in this.grvListado" + p_objTabla.Nombre + ".Rows) ");
+        //    p_Cadena.AppendLine("    { ");
+        //    p_Cadena.AppendLine("    objRow.Selected = false;");
+        //    p_Cadena.AppendLine("    } ");
+        //    p_Cadena.AppendLine("    foreach (DataGridViewRow objRow in this.grvListado" + p_objTabla.Nombre + ".Rows)");
+        //    p_Cadena.AppendLine("       { ");
+        //    p_Cadena.AppendLine("    if (Convert.ToString(objRow.Cells[" + "\"" + "ColId" + "\"" + "].Value) == p_Id) ");
+        //    p_Cadena.AppendLine("           { ");
+        //    p_Cadena.AppendLine("               objRow.Selected = true; ");
+        //    p_Cadena.AppendLine("               this.grvListado" + p_objTabla.Nombre + ".CurrentCell=objRow.Cells["+ "\"" +"ColId"+ "\"" + "];");
+        //    p_Cadena.AppendLine("               break;");
+        //    p_Cadena.AppendLine("           } ");
+        //    p_Cadena.AppendLine("       } ");
+        //    p_Cadena.AppendLine("    } ");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("     private void Nuevo()");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("          " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = new " + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("          obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("          CargarGrid" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("          SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id);");
+        //    p_Cadena.AppendLine("          Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("     private void Insertar()");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
+        //    p_Cadena.AppendLine("     Obtener" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("     obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Agregar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("     CargarGrid" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("     SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id);");
+        //    p_Cadena.AppendLine("     Cargar" + p_objTabla.Nombre + "(ref obj" + p_objTabla.Nombre + ");");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("     private void Eliminar()");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("     " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + " = objAdministrador" + p_objTabla.Nombre + ".Obtener" + p_objTabla.Nombre + "XId(this.txtId.Text);");
+        //    p_Cadena.AppendLine("        objAdministrador" + p_objTabla.Nombre + ".Eliminar" + p_objTabla.Nombre + "(obj" + p_objTabla.Nombre + ".Id);");
+        //    p_Cadena.AppendLine("        CargarGrid" + p_objTabla.Nombre + "(); ");
+        //    p_Cadena.AppendLine("        SeleccionarRegistro(obj" + p_objTabla.Nombre + ".Id); ");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("     private void CancelarCambio()");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("          objAdministrador" + p_objTabla.Nombre + ".CancelarCambios" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("     private void GuardarCambio()");
+        //    p_Cadena.AppendLine("     {");
+        //    p_Cadena.AppendLine("           objAdministrador" + p_objTabla.Nombre + ".Guardar" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("           CargarGrid" + p_objTabla.Nombre + "();");
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("  private void Cargar" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
+        //    p_Cadena.AppendLine("  {");
+        //    p_Cadena.AppendLine("     this.txtId.Text = Convert.ToString(obj" + p_objTabla.Nombre + ".Id);");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+        //    {
+        //        p_Cadena.AppendLine(" this.txt" + objColumnas.NombreColumna + ".Text = Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + ");");
+        //    }
+        //    p_Cadena.AppendLine(" }");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine("");
+        //    p_Cadena.AppendLine(" private void Obtener" + p_objTabla.Nombre + "(ref " + p_objTabla.Nombre + " obj" + p_objTabla.Nombre + ")");
+        //    p_Cadena.AppendLine("     {");
+        //    foreach (Columnas objColumnas in p_objTabla.ListarColumnas())
+        //    {
+        //        p_Cadena.AppendLine("obj" + p_objTabla.Nombre + "." + objColumnas.NombreColumna + "= Convert." + ConvertirTipoDatoSQL_ConvertTO_C(objColumnas) + "(this.txt" + objColumnas.NombreColumna + ".Text);");
+        //    }
+        //    p_Cadena.AppendLine("     }");
+        //    p_Cadena.AppendLine("");
+        //    return p_Cadena;
+        //}
 
 
 
@@ -3001,10 +3030,6 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("}");
             return p_Cadena;
         }
-
-
-        
-
 
         //************************************************************************************
         //************************************************************************************
