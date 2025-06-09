@@ -1962,7 +1962,7 @@ namespace DLL_MAPEO
             p_Cadena.AppendLine("       {");
             p_Cadena.AppendLine("         Listado" + p_objTabla.Nombre + ".Add(p_obj" + p_objTabla.Nombre + ");");
             p_Cadena.AppendLine("     }");
-            p_Cadena.AppendLine("     return p_obj" + p_objTabla.Nombre + ".Id");
+            p_Cadena.AppendLine("     return p_obj" + p_objTabla.Nombre + ".Id;");
             p_Cadena.AppendLine("}");
             return p_Cadena;
         }
